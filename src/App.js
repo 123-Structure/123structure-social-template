@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // OTHER
@@ -8,8 +8,15 @@ import Settings from "./components/Settings/Settings";
 import Presentation from "./components/Views/Presentation/Presentation.jsx";
 import Zone from "./components/Views/Zone/Zone.jsx";
 import Contact from "./components/Views/Contact/Contact.jsx";
+// IMAGES
+import background from "./assets/img/background.png";
 
 function App() {
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${background})`;
+    document.body.style.backgroundRepeat = "repeat";
+  }, []);
+
   const customTheme = createTheme({
     palette: {
       type: "light",

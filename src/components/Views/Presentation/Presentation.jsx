@@ -13,8 +13,6 @@ const Presentation = ({
   selectedCity,
   picture,
 }) => {
-  console.log(picture);
-
   const [titleLineCount, setTitleLineCount] = useState(0);
   const [cityLineCount, setCityLineCount] = useState(0);
 
