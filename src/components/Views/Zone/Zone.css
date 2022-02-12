@@ -1,0 +1,26 @@
+.zone-card {
+  position: relative;
+}
+
+.bl-zone-card {
+  position: absolute;
+  bottom: -23px;
+  left: -5px;
+}
+
+.tr-zone-card {
+  position: absolute;
+  top: -46px;
+  right: -25px;
+}
+
+.Card-content {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

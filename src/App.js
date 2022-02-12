@@ -1,25 +1,133 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useState } from "react";
+import "./App.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+// OTHER
+import Carousel from "react-material-ui-carousel";
+// COMPONENTS
+import Settings from "./components/Settings/Settings";
+import Presentation from "./components/Views/Presentation/Presentation.jsx";
+import Zone from "./components/Views/Zone/Zone.jsx";
+import Contact from "./components/Views/Contact/Contact.jsx";
 
 function App() {
+  const customTheme = createTheme({
+    palette: {
+      type: "light",
+      primary: {
+        main: "#ffcc00",
+      },
+      secondary: {
+        main: "#f28e1c",
+      },
+    },
+  });
+
+  const printRef = useRef([]);
+
+  const [projectName, setProjectName] = useState("");
+  const [selectedCity, setSelectedCity] = useState({});
+  const [picture, setPicture] = useState();
+  const [autoplay, setAutoplay] = useState(false);
+  const [currentView, setCurrentView] = useState(0);
+
+  const theme = {
+    color: {
+      dark: "#231f20",
+      light: "#f2f2f2",
+      main: "#ffcc00",
+    },
+    dimension: {
+      width: "600px",
+      height: "600px",
+    },
+  };
+
+  const subtitle = () => {
+    switch (currentView) {
+      case 0:
+        return "1/3 - Presentation";
+
+      case 1:
+        return "2/3 - Zone Sismique / Vent / Neige";
+
+      case 2:
+        return "3/3 - Contact";
+
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={customTheme}>
+      <div className="App">
+        <Settings
+          printRef={printRef}
+          theme={theme}
+          autoplay={autoplay}
+          setAutoplay={setAutoplay}
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
+          projectName={projectName}
+          setProjectName={setProjectName}
+          setPicture={setPicture}
+        />
+        <div className="Preview">
+          <Carousel
+            autoPlay={autoplay}
+            indicators={false}
+            onChange={(e) => setCurrentView(e)}
+            index={currentView}
+          >
+            <Presentation
+              printRef={printRef}
+              theme={theme}
+              projectName={projectName}
+              selectedCity={selectedCity}
+              picture={picture}
+            />
+            <Zone
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+            />
+            <Contact
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+            />
+          </Carousel>
+          <h4
+            style={{
+              position: "absolute",
+              color: theme.color.dark,
+              background: "rgb(227,242,253,0.5)", // Make sure this color has an opacity of less than 1
+              backdropFilter: "blur(4px)", // This be the blur
+              borderRadius: "8px",
+              padding: "16px",
+              marginTop: "8px",
+            }}
+          >
+            {subtitle()}
+          </h4>
+        </div>
+        <div className="download-card" style={{ display: "none" }}>
+          <Presentation
+            printRef={printRef}
+            theme={theme}
+            projectName={projectName}
+            selectedCity={selectedCity}
+            picture={picture}
+          />
+          <Zone printRef={printRef} theme={theme} selectedCity={selectedCity} />
+          <Contact
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+          />
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
