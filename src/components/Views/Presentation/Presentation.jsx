@@ -3,6 +3,7 @@ import "./Presentation.css";
 // IMAGES
 import topLeft from "../../../assets/img/dark-top-left.png";
 import bottomRight from "../../../assets/img/dark-bottom-right.png";
+import logoMin from "../../../assets/img/123structure-logo-min.png";
 // ICONS
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 
@@ -12,6 +13,7 @@ const Presentation = ({
   projectName,
   selectedCity,
   picture,
+  picturePosition,
 }) => {
   const [titleLineCount, setTitleLineCount] = useState(0);
   const [cityLineCount, setCityLineCount] = useState(0);
@@ -21,10 +23,6 @@ const Presentation = ({
     const nbLine = divHeight / h;
     return nbLine;
   };
-
-  if (document.getElementById("presentation-title") !== null) {
-    countLines(document.getElementById("presentation-title"), 75);
-  }
 
   useEffect(() => {
     if (document.getElementById("presentation-title") !== null) {
@@ -55,19 +53,16 @@ const Presentation = ({
         className="tl-presentation-card"
         src={topLeft}
         alt="top-left"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
       />
       <img
         className="br-presentation-card"
         src={bottomRight}
         alt="bottom-right"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
+      />
+      <img
+        className="bl-presentation-logo"
+        src={logoMin}
+        alt="logo"
       />
       <div className="Card-content">
         <h1
@@ -110,11 +105,11 @@ const Presentation = ({
             }}
           />
         ) : (
-          <img
-            id="main"
-            src={picture}
-            alt="main"
+          <div
             style={{
+              backgroundImage: `url(${picture})`,
+              backgroundSize: "cover",
+              backgroundPosition: `${picturePosition}% 50%`,
               height:
                 cityLineCount > 1 && titleLineCount > 1
                   ? "320px"

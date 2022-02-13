@@ -8,6 +8,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import Slider from "@mui/material/Slider";
 // OTHER
 import { saveAs } from "file-saver";
 import html2canvas from "html2canvas";
@@ -23,6 +24,7 @@ const Settings = ({
   setSelectedCity,
   setProjectName,
   setPicture,
+  setPicturePosition,
 }) => {
   const fileInput = useRef();
 
@@ -122,8 +124,23 @@ const Settings = ({
           ref={fileInput}
           type="file"
           style={{ display: "none" }}
-          onChange={(e) => setPicture(window.URL.createObjectURL(e.target.files[0]))}
+          onChange={(e) =>
+            setPicture(window.URL.createObjectURL(e.target.files[0]))
+          }
         />
+        <div>
+          <p>Position Image principale</p>
+          <Slider
+            aria-label="Temperature"
+            defaultValue={50}
+            valueLabelDisplay="auto"
+            onChange={(e) => setPicturePosition(e.target.value)}
+            // step={1}
+            // marks
+            min={1}
+            max={100}
+          />
+        </div>
         <FormGroup>
           <FormControlLabel
             control={

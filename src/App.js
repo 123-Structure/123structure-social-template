@@ -34,6 +34,7 @@ function App() {
   const [projectName, setProjectName] = useState("");
   const [selectedCity, setSelectedCity] = useState({});
   const [picture, setPicture] = useState();
+  const [picturePosition, setPicturePosition] = useState(50);
   const [autoplay, setAutoplay] = useState(false);
   const [currentView, setCurrentView] = useState(0);
 
@@ -78,6 +79,8 @@ function App() {
           projectName={projectName}
           setProjectName={setProjectName}
           setPicture={setPicture}
+          picturePosition={picturePosition}
+          setPicturePosition={setPicturePosition}
         />
         <div className="Preview">
           <Carousel
@@ -92,6 +95,7 @@ function App() {
               projectName={projectName}
               selectedCity={selectedCity}
               picture={picture}
+              picturePosition={picturePosition}
             />
             <Zone
               printRef={printRef}
@@ -125,6 +129,7 @@ function App() {
             projectName={projectName}
             selectedCity={selectedCity}
             picture={picture}
+            picturePosition={picturePosition}
           />
           <Zone printRef={printRef} theme={theme} selectedCity={selectedCity} />
           <Contact

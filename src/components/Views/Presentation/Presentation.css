@@ -6,12 +6,24 @@
   position: absolute;
   top: -12px;
   left: -6px;
+  width: 50%;
+  z-index: 0;
 }
 
 .br-presentation-card {
   position: absolute;
   bottom: 0px;
   right: 0px;
+  width: 50%;
+  z-index: 0;
+}
+
+.bl-presentation-logo {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  width: 12%;
+  z-index: 0;
 }
 
 .Card-content {
