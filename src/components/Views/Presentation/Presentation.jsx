@@ -98,7 +98,7 @@ const Presentation = ({
         {picture === undefined ? (
           <img
             id="main"
-            src="https://via.placeholder.com/380"
+            src="https://via.placeholder.com/300?text=Image+1"
             alt="main"
             style={{
               borderRadius: "8px",
