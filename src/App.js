@@ -106,7 +106,7 @@ function App() {
             <Contact
               printRef={printRef}
               theme={theme}
-              selectedCity={selectedCity}
+              projectName={projectName}
             />
           </Carousel>
           <h4
@@ -141,7 +141,7 @@ function App() {
           <Contact
             printRef={printRef}
             theme={theme}
-            selectedCity={selectedCity}
+            projectName={projectName}
           />
         </div>
       </div>

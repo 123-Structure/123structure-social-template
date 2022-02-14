@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 // IMAGES
 import bottomLeft from "../../../assets/img/light-bottom-left.png";
 import topRight from "../../../assets/img/light-top-right.png";
+import logoMin from "../../../assets/img/logo/123structure-logo-min-dark.png";
 // WIND
 import wind_default from "../../../assets/img/wind/wind-default.png";
 import wind_1 from "../../../assets/img/wind/wind-1.png";
@@ -79,6 +80,11 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           width: "50%",
           zIndex: 0,
         }}
+      />
+      <img
+        className="bl-presentation-logo"
+        src={logoMin}
+        alt="logo"
       />
       <h5
         className="zone-title"

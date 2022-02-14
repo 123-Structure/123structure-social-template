@@ -3,7 +3,7 @@ import "./Presentation.css";
 // IMAGES
 import topLeft from "../../../assets/img/dark-top-left.png";
 import bottomRight from "../../../assets/img/dark-bottom-right.png";
-import logoMin from "../../../assets/img/123structure-logo-min.png";
+import logoMin from "../../../assets/img/logo/123structure-logo-min.png";
 // ICONS
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 
