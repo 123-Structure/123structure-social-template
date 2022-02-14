@@ -1,5 +1,5 @@
 import React from "react";
-import "./Contact.css"
+import "./Contact.css";
 // IMAGES
 import bottomLeft from "../../../assets/img/main-bottom-left.png";
 import topRight from "../../../assets/img/main-top-right.png";
@@ -35,20 +35,14 @@ const Contact = ({ printRef, theme, selectedCity }) => {
           zIndex: 0,
         }}
       />
-      {selectedCity.nomCommuneExact ? (
-        <div className="Card-content">
-          <h1>
-            {selectedCity.nomCommuneExact} ({selectedCity.codePostal})
-          </h1>
-          <h2>{selectedCity.vent}</h2>
-          <h2>{selectedCity.neige}</h2>
-          <h2>{selectedCity.seisme}</h2>
-        </div>
-      ) : (
-        <div className="Card-content">
-          <h1>Aucune valeur correspondante à votre recherche</h1>
-        </div>
-      )}
+      <div className="Card-content">
+        <h1>
+          {selectedCity.nomCommuneExact} ({selectedCity.codePostal})
+        </h1>
+        <h2>{selectedCity.vent}</h2>
+        <h2>{selectedCity.neige}</h2>
+        <h2>{selectedCity.seisme}</h2>
+      </div>
     </div>
   );
 };

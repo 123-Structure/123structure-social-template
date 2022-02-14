@@ -101,6 +101,7 @@ function App() {
               printRef={printRef}
               theme={theme}
               selectedCity={selectedCity}
+              projectName={projectName}
             />
             <Contact
               printRef={printRef}
@@ -112,7 +113,7 @@ function App() {
             style={{
               position: "absolute",
               color: theme.color.dark,
-              background: "rgb(227,242,253,0.5)", // Make sure this color has an opacity of less than 1
+              background: "rgb(255, 250, 230,0.5)", // Make sure this color has an opacity of less than 1
               backdropFilter: "blur(4px)", // This be the blur
               borderRadius: "8px",
               padding: "16px",
@@ -131,7 +132,12 @@ function App() {
             picture={picture}
             picturePosition={picturePosition}
           />
-          <Zone printRef={printRef} theme={theme} selectedCity={selectedCity} />
+          <Zone
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
+          />
           <Contact
             printRef={printRef}
             theme={theme}

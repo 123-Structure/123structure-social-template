@@ -88,7 +88,7 @@ const Presentation = ({
             textAlign: "center",
             marginTop: titleLineCount > 1 ? "0" : "24px",
             marginBottom:
-              cityLineCount > 1 && titleLineCount > 1 ? "32px" : "32px",
+              "32px",
           }}
         >
           {selectedCity.nomCommuneExact
