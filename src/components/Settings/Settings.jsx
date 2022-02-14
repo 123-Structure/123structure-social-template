@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Settings.css";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
@@ -16,11 +16,23 @@ import CircularProgress from "@mui/material/CircularProgress";
 // ICONS
 import SaveIcon from "@mui/icons-material/Save";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
+import logoMin from "../../assets/img/logo/123structure-logo-min.png";
 // OTHER
 import { saveAs } from "file-saver";
 import html2canvas from "html2canvas";
 import axios from "axios";
 import ScrollArea from "react-scrollbar";
+// LEAFLET
+import "leaflet/dist/leaflet.css";
+import {
+  Map,
+  Marker,
+  Popup,
+  TileLayer,
+  FeatureGroup,
+  GeoJSON,
+} from "react-leaflet";
+import { SimpleMapScreenshoter } from "leaflet-simple-map-screenshoter";
 
 const Settings = ({
   printRef,
@@ -28,13 +40,18 @@ const Settings = ({
   autoplay,
   selectedCity,
   projectName,
+  map1,
   setAutoplay,
   setSelectedCity,
   setProjectName,
   setPicture,
   setPicturePosition,
+  setMap1,
+  setMap2,
 }) => {
   const fileInput = useRef();
+  const map1Ref = useRef();
+  const map2Ref = useRef();
 
   const [sismoAPI, setSismoAPI] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -84,6 +101,34 @@ const Settings = ({
       cards.style.display = "none";
       preview.style.display = "";
     });
+  };
+
+  const takeScreenshot = () => {
+    const map1 = map1Ref.current.leafletElement;
+    const screenshot1 = new SimpleMapScreenshoter({
+      hidden: true, // hide screen btn on map
+    }).addTo(map1);
+    screenshot1
+      .takeScreen("blob")
+      .then((blob) => {
+        setMap1(URL.createObjectURL(blob));
+      })
+      .catch((e) => {
+        alert(e.toString());
+      });
+
+    const map2 = map2Ref.current.leafletElement;
+    const screenshot2 = new SimpleMapScreenshoter({
+      hidden: true, // hide screen btn on map
+    }).addTo(map2);
+    screenshot2
+      .takeScreen("blob")
+      .then((blob) => {
+        setMap2(URL.createObjectURL(blob));
+      })
+      .catch((e) => {
+        alert(e.toString());
+      });
   };
 
   return (
@@ -199,6 +244,37 @@ const Settings = ({
               sx={{ width: "75%" }}
             />
           </div>
+          <h2>Localisation</h2>
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<InsertPhotoIcon />}
+            onClick={takeScreenshot}
+          >
+            Capturer les cartes
+          </Button>
+          <Map center={[51.505, -0.09]} zoom={13} className="maps" ref={map1Ref}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </Map>
+          <Map center={[51.505, -0.09]} zoom={6} className="maps" ref={map2Ref}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[51.505, -0.09]}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </Map>
           <h2>Visualisation et export</h2>
           <FormGroup sx={{ width: "35%" }}>
             <FormControlLabel

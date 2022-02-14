@@ -36,6 +36,8 @@ function App() {
   const [selectedCity, setSelectedCity] = useState({});
   const [picture, setPicture] = useState();
   const [picturePosition, setPicturePosition] = useState(50);
+  const [map1, setMap1] = useState("");
+  const [map2, setMap2] = useState("");
   const [autoplay, setAutoplay] = useState(false);
   const [currentView, setCurrentView] = useState(0);
 
@@ -85,6 +87,8 @@ function App() {
           setPicture={setPicture}
           picturePosition={picturePosition}
           setPicturePosition={setPicturePosition}
+          setMap1={setMap1}
+          setMap2={setMap2}
         />
         <div className="Preview">
           <Carousel
@@ -107,6 +111,8 @@ function App() {
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
+              map1={map1}
+              map2={map2}
             />
             <Zone
               printRef={printRef}
@@ -148,6 +154,8 @@ function App() {
             theme={theme}
             selectedCity={selectedCity}
             projectName={projectName}
+            map1={map1}
+            map2={map2}
           />
           <Zone
             printRef={printRef}

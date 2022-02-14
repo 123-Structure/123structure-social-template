@@ -8,3 +8,9 @@
   padding-right: 48px;
   /* background-color: green; */
 }
+
+.maps {
+  height: 350px;
+  width: 80%;
+  margin-top: 16px;
+}
