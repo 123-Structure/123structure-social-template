@@ -69,7 +69,7 @@ const Settings = ({
     const preview = await document.querySelector(".Preview");
     preview.style.display = "none";
 
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 3; i++) {
       const element = printRef.current[i];
       const canvas = await html2canvas(element, { scale: 2 });
       const data = await canvas.toDataURL("image/jpg");

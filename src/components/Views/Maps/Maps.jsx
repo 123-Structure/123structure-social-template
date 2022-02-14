@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Zone.css";
+import "./Maps.css";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
 // IMAGES
@@ -34,7 +34,7 @@ import seism_5 from "../../../assets/img/seism/seism-5.png";
 // ICONS
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-const Zone = ({ printRef, theme, selectedCity, projectName }) => {
+const Maps = ({ printRef, theme, selectedCity, projectName }) => {
   const IconSize = 125;
 
   const [titleLineCount, setTitleLineCount] = useState(0);
@@ -53,7 +53,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
 
   return (
     <div
-      className="zone-card"
+      className="maps-card"
       ref={(e) => (printRef.current[2] = e)}
       style={{
         width: theme.dimension.width,
@@ -64,7 +64,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
       }}
     >
       <img
-        className="bl-zone-card"
+        className="bl-maps-card"
         src={bottomLeft}
         alt="bottom-left"
         style={{
@@ -73,7 +73,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
         }}
       />
       <img
-        className="tr-zone-card"
+        className="tr-maps-card"
         src={topRight}
         alt="top-right"
         style={{
@@ -87,7 +87,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
         alt="logo"
       />
       <h5
-        className="zone-title"
+        className="maps-title"
         style={{
           color: theme.color.dark,
           background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
@@ -241,4 +241,4 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
   );
 };
 
-export default Zone;
+export default Maps;

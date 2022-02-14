@@ -7,6 +7,7 @@ import Carousel from "react-material-ui-carousel";
 import Settings from "./components/Settings/Settings";
 import Presentation from "./components/Views/Presentation/Presentation.jsx";
 import Zone from "./components/Views/Zone/Zone.jsx";
+import Maps from "./components/Views/Maps/Maps.jsx";
 import Contact from "./components/Views/Contact/Contact.jsx";
 // IMAGES
 import background from "./assets/img/background.png";
@@ -53,13 +54,16 @@ function App() {
   const subtitle = () => {
     switch (currentView) {
       case 0:
-        return "1/3 - Presentation";
+        return "1/4 - Presentation";
 
       case 1:
-        return "2/3 - Zone Sismique / Vent / Neige";
+        return "2/4 - Localisation";
 
       case 2:
-        return "3/3 - Contact";
+        return "3/4 - Zone Sismique / Vent / Neige";
+
+      case 3:
+        return "4/4 - Contact";
 
       default:
         break;
@@ -88,6 +92,7 @@ function App() {
             indicators={false}
             onChange={(e) => setCurrentView(e)}
             index={currentView}
+            swipe={false}
           >
             <Presentation
               printRef={printRef}
@@ -96,6 +101,12 @@ function App() {
               selectedCity={selectedCity}
               picture={picture}
               picturePosition={picturePosition}
+            />
+            <Maps
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
             />
             <Zone
               printRef={printRef}
@@ -131,6 +142,12 @@ function App() {
             selectedCity={selectedCity}
             picture={picture}
             picturePosition={picturePosition}
+          />
+          <Maps
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
           />
           <Zone
             printRef={printRef}

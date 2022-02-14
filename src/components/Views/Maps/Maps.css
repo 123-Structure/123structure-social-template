@@ -1,21 +1,26 @@
-.zone-card {
+.maps-card {
   position: relative;
 }
 
-.bl-zone-card {
+.bl-maps-card {
   position: absolute;
   bottom: -23px;
   left: -5px;
 }
 
-.tr-zone-card {
+.tr-maps-card {
   position: absolute;
   top: -46px;
   right: -25px;
 }
 
-.zone-title {
+.maps-title {
   position: absolute;
   bottom: 4px;
   right: 24px;
+}
+
+.maps-container {
+  height: 350px;
+  width: 350px;	
 }

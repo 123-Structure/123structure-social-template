@@ -13,14 +13,3 @@
   bottom: -2px;
   left: -113px;
 }
-
-.Card-content {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
