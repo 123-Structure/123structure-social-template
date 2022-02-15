@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Zone.css";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
+// FONT AWESOME ICONS
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faHouseChimney,
+} from "@fortawesome/free-solid-svg-icons";
 // IMAGES
 import bottomLeft from "../../../assets/img/light-bottom-left.png";
 import topRight from "../../../assets/img/light-top-right.png";
@@ -31,8 +37,6 @@ import seism_2 from "../../../assets/img/seism/seism-2.png";
 import seism_3 from "../../../assets/img/seism/seism-3.png";
 import seism_4 from "../../../assets/img/seism/seism-4.png";
 import seism_5 from "../../../assets/img/seism/seism-5.png";
-// ICONS
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const Zone = ({ printRef, theme, selectedCity, projectName }) => {
   const IconSize = 125;
@@ -81,11 +85,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           zIndex: 0,
         }}
       />
-      <img
-        className="bl-presentation-logo"
-        src={logoMin}
-        alt="logo"
-      />
+      <img className="bl-presentation-logo" src={logoMin} alt="logo" />
       <h5
         className="zone-title"
         style={{
@@ -98,7 +98,8 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           textAlign: "center",
         }}
       >
-        {projectName ? projectName : "Nom du projet"}
+        <FontAwesomeIcon icon={faHouseChimney} />
+        {projectName ? " "+projectName : " Nom du projet"}
       </h5>
       <div className="Card-content">
         <h1
@@ -113,10 +114,10 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
             textAlign: "center",
           }}
         >
-          <LocationOnIcon fontSize="32" sx={{ marginRight: "8px" }} />
+          <FontAwesomeIcon icon={faLocationDot} />
           {selectedCity.nomCommuneExact
-            ? `${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
-            : "Nom de la ville (00)"}
+            ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+            : " Nom de la ville (00)"}
         </h1>
         <div
           style={{

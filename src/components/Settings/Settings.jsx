@@ -23,11 +23,11 @@ import html2canvas from "html2canvas";
 import axios from "axios";
 import ScrollArea from "react-scrollbar";
 // LEAFLET
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
   Map,
   Marker,
-  Popup,
   TileLayer,
   FeatureGroup,
   GeoJSON,
@@ -51,10 +51,22 @@ const Settings = ({
 }) => {
   const fileInput = useRef();
   const map1Ref = useRef();
+  const layerGroupRef = useRef();
   const map2Ref = useRef();
 
   const [sismoAPI, setSismoAPI] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+
+  const myIcon = L.icon({
+    iconUrl: logoMin,
+    iconRetinaUrl: logoMin,
+    iconAnchor: null,
+    popupAnchor: [0, -15],
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: 25,
+  });
 
   const handleSearchValueChange = async (e) => {
     await setSearchValue(e.target.value);
@@ -69,7 +81,7 @@ const Settings = ({
   };
 
   const handleSelectedCity = (city) => {
-    sismoAPI.forEach((element) => {
+    sismoAPI.forEach((element, id) => {
       if (element.nomCommuneExact === city) {
         setSelectedCity(element);
       }
@@ -88,14 +100,15 @@ const Settings = ({
 
     for (let i = 0; i <= 3; i++) {
       const element = printRef.current[i];
-      const canvas = await html2canvas(element, { scale: 2 });
+      element.style.transform = "scale(2)";
+      const canvas = await html2canvas(element);
       const data = await canvas.toDataURL("image/jpg");
       console.log(i, data);
       zip.file(`${i}.jpg`, data.replace(/^data:image\/(png|jpg);base64,/, ""), {
         base64: true,
       });
     }
-
+    
     zip.generateAsync({ type: "blob" }).then((content) => {
       saveAs(content, `${projectName}.zip`);
       cards.style.display = "none";
@@ -130,6 +143,17 @@ const Settings = ({
         alert(e.toString());
       });
   };
+
+  useEffect(() => {
+    if (selectedCity.border !== undefined) {
+      const map = map1Ref.current.leafletElement;
+      const layerGroup = layerGroupRef.current.leafletElement;
+      const bounds = layerGroup.getBounds();
+      if (bounds.isValid()) {
+        map.fitBounds(bounds);
+      }
+    }
+  });
 
   return (
     <div className="Settings">
@@ -203,7 +227,7 @@ const Settings = ({
                     <MenuItem
                       key={key}
                       value={option.nomCommuneExact}
-                      // onClick={(e) => handleSelectedCity(e.target.value)}
+                      // onClick={setIndex(key)}
                     >
                       {option.nomCommuneExact}
                     </MenuItem>
@@ -253,27 +277,56 @@ const Settings = ({
           >
             Capturer les cartes
           </Button>
-          <Map center={[51.505, -0.09]} zoom={13} className="maps" ref={map1Ref}>
+          <Map
+            center={[47.0870318, -1.2828461]}
+            zoom={14}
+            className="maps"
+            ref={map1Ref}
+            zoomControl={false}
+            scrollWheelZoom={false}
+            dragging={false}
+          >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
+            {/* <Marker position={[51.505, -0.09]}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
-            </Marker>
+            </Marker> */}
+            <FeatureGroup ref={layerGroupRef}>
+              <GeoJSON
+                key={selectedCity.nomCommuneExact}
+                data={selectedCity.border}
+                style={{
+                  color: theme.color.main,
+                }}
+              />
+            </FeatureGroup>
           </Map>
-          <Map center={[51.505, -0.09]} zoom={6} className="maps" ref={map2Ref}>
+          <Map
+            center={[46.539006, 1.7]}
+            zoom={5}
+            className="maps"
+            ref={map2Ref}
+            zoomControl={false}
+            scrollWheelZoom={false}
+            dragging={false}
+          >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
+            <Marker
+              position={[
+                selectedCity.latitude !== undefined ? selectedCity.latitude : 0,
+                selectedCity.longitude !== undefined
+                  ? selectedCity.longitude
+                  : 0,
+              ]}
+              icon={myIcon}
+            />
           </Map>
           <h2>Visualisation et export</h2>
           <FormGroup sx={{ width: "35%" }}>

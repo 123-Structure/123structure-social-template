@@ -4,8 +4,9 @@ import "./Presentation.css";
 import topLeft from "../../../assets/img/dark-top-left.png";
 import bottomRight from "../../../assets/img/dark-bottom-right.png";
 import logoMin from "../../../assets/img/logo/123structure-logo-min.png";
-// ICONS
-import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
+// FONT AWESOME ICONS
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseChimney } from "@fortawesome/free-solid-svg-icons";
 
 const Presentation = ({
   printRef,
@@ -49,21 +50,13 @@ const Presentation = ({
         padding: "16px",
       }}
     >
-      <img
-        className="tl-presentation-card"
-        src={topLeft}
-        alt="top-left"
-      />
+      <img className="tl-presentation-card" src={topLeft} alt="top-left" />
       <img
         className="br-presentation-card"
         src={bottomRight}
         alt="bottom-right"
       />
-      <img
-        className="bl-presentation-logo"
-        src={logoMin}
-        alt="logo"
-      />
+      <img className="bl-presentation-logo" src={logoMin} alt="logo" />
       <div className="Card-content">
         <h1
           id="presentation-title"
@@ -77,8 +70,8 @@ const Presentation = ({
             textAlign: "center",
           }}
         >
-          <MapsHomeWorkIcon fontSize="32" sx={{ marginRight: "8px" }} />
-          {projectName ? projectName : "Nom du projet"}
+          <FontAwesomeIcon icon={faHouseChimney} />
+          {projectName ? " "+projectName : " Nom du projet"}
         </h1>
         <h1
           id="presentation-city"
@@ -87,8 +80,7 @@ const Presentation = ({
             fontStyle: "italic",
             textAlign: "center",
             marginTop: titleLineCount > 1 ? "0" : "24px",
-            marginBottom:
-              "32px",
+            marginBottom: "32px",
           }}
         >
           {selectedCity.nomCommuneExact

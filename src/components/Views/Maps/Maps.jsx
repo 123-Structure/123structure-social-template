@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Maps.css";
-// MATERIAL UI
-import Paper from "@mui/material/Paper";
 // IMAGES
 import bottomLeft from "../../../assets/img/light-bottom-left.png";
 import topRight from "../../../assets/img/light-top-right.png";
 import logoMin from "../../../assets/img/logo/123structure-logo-min-dark.png";
-// ICONS
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+// FONT AWESOME ICONS
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faHouseChimney,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
-  const IconSize = 125;
-
   const [titleLineCount, setTitleLineCount] = useState(0);
 
   const countLines = (el, h) => {
@@ -69,7 +69,8 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
           textAlign: "center",
         }}
       >
-        {projectName ? projectName : "Nom du projet"}
+        <FontAwesomeIcon icon={faHouseChimney} />
+        {projectName ? " " + projectName : " Nom du projet"}
       </h5>
       <div className="Card-content">
         <h1
@@ -84,10 +85,10 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
             textAlign: "center",
           }}
         >
-          <LocationOnIcon fontSize="32" sx={{ marginRight: "8px" }} />
+          <FontAwesomeIcon icon={faLocationDot} />
           {selectedCity.nomCommuneExact
-            ? `${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
-            : "Nom de la ville (00)"}
+            ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+            : " Nom de la ville (00)"}
         </h1>
         <div
           style={{
@@ -95,6 +96,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: titleLineCount > 1 ? "48px" : "80px",
           }}
         >
           {map1 === "" ? (
@@ -115,6 +117,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
                 height: "250px",
                 width: "250px",
                 borderRadius: "8px",
+                marginRight: "24px",
               }}
             />
           )}

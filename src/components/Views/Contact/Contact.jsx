@@ -4,8 +4,14 @@ import "./Contact.css";
 import bottomLeft from "../../../assets/img/main-bottom-left.png";
 import topRight from "../../../assets/img/main-top-right.png";
 import logo from "../../../assets/img/logo/123structure-logo-dark.png";
-// ICONS
-import MailIcon from "@mui/icons-material/Mail";
+// FONT AWESOME ICONS
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faPhone,
+  faDesktop,
+  faHouseChimney,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Contact = ({ printRef, theme, projectName }) => {
   return (
@@ -50,7 +56,8 @@ const Contact = ({ printRef, theme, projectName }) => {
           textAlign: "center",
         }}
       >
-        {projectName ? projectName : "Nom du projet"}
+        <FontAwesomeIcon icon={faHouseChimney} />
+        {projectName ? " " + projectName : " Nom du projet"}
       </h5>
       <div className="Card-content">
         <img
@@ -61,9 +68,16 @@ const Contact = ({ printRef, theme, projectName }) => {
             marginTop: "128px",
           }}
         />
-        <h1>📧 contact@123structure.fr</h1>
-        <h1>📞 02.28.00.31.95</h1>
-        <h1>💻 123structure.fr</h1>
+
+        <h1>
+          <FontAwesomeIcon icon={faEnvelope} /> contact@123structure.fr
+        </h1>
+        <h1>
+          <FontAwesomeIcon icon={faPhone} /> 02.28.00.31.95
+        </h1>
+        <h1>
+          <FontAwesomeIcon icon={faDesktop} /> 123structure.fr
+        </h1>
       </div>
     </div>
   );

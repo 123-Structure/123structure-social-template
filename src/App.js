@@ -46,6 +46,7 @@ function App() {
       dark: "#231f20",
       light: "#f2f2f2",
       main: "#ffcc00",
+      secondary: "#f28e1c",
     },
     dimension: {
       width: "600px",
