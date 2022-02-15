@@ -4,12 +4,16 @@
 
 .tr-contact-card {
   position: absolute;
-  top: -45px;
-  right: -40px;
+  top: -40px;
+  right: -30px;
+  width: 30%;
+  z-index: 0;
 }
 
 .bl-contact-card {
   position: absolute;
   bottom: -2px;
-  left: -113px;
+  left: -165px;
+  width: 45%;
+  z-index: 0;
 }

@@ -68,10 +68,12 @@ const Presentation = ({
             padding: "16px",
             textTransform: "uppercase",
             textAlign: "center",
+            fontSize: "2em",
+            marginTop: "46px",
           }}
         >
           <FontAwesomeIcon icon={faHouseChimney} />
-          {projectName ? " "+projectName : " Nom du projet"}
+          {projectName ? " " + projectName : " Nom du projet"}
         </h1>
         <h1
           id="presentation-city"
@@ -79,8 +81,9 @@ const Presentation = ({
             color: theme.color.light,
             fontStyle: "italic",
             textAlign: "center",
-            marginTop: titleLineCount > 1 ? "0" : "24px",
-            marginBottom: "32px",
+            marginTop: titleLineCount > 1 ? "32px" : "64px",
+            marginBottom: "64px",
+            fontSize: "2em",
           }}
         >
           {selectedCity.nomCommuneExact
@@ -104,20 +107,20 @@ const Presentation = ({
               backgroundPosition: `${picturePosition}% 50%`,
               height:
                 cityLineCount > 1 && titleLineCount > 1
-                  ? "320px"
+                  ? "520px"
                   : cityLineCount === 1 && titleLineCount > 1
-                  ? "360px"
+                  ? "560px"
                   : cityLineCount > 1 && titleLineCount === 1
-                  ? "340px"
-                  : "380px",
+                  ? "540px"
+                  : "580px",
               width:
                 cityLineCount > 1 && titleLineCount > 1
-                  ? "320px"
+                  ? "520px"
                   : cityLineCount === 1 && titleLineCount > 1
-                  ? "360px"
+                  ? "560px"
                   : cityLineCount > 1 && titleLineCount === 1
-                  ? "340px"
-                  : "380px",
+                  ? "540px"
+                  : "580px",
               borderRadius: "8px",
             }}
           />

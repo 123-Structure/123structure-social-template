@@ -42,19 +42,11 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
         className="bl-maps-card"
         src={bottomLeft}
         alt="bottom-left"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
       />
       <img
         className="tr-maps-card"
         src={topRight}
         alt="top-right"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
       />
       <img className="bl-presentation-logo" src={logoMin} alt="logo" />
       <h5
@@ -67,6 +59,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
           padding: "16px",
           textTransform: "uppercase",
           textAlign: "center",
+          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
@@ -83,6 +76,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
             padding: "16px",
             textTransform: "uppercase",
             textAlign: "center",
+            marginTop: "72px",
           }}
         >
           <FontAwesomeIcon icon={faLocationDot} />
@@ -96,7 +90,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: titleLineCount > 1 ? "48px" : "80px",
+            marginTop: titleLineCount > 1 ? "104px" : "150px",
           }}
         >
           {map1 === "" ? (
@@ -114,8 +108,8 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
                 backgroundImage: `url(${map1})`,
                 backgroundSize: "cover",
                 backgroundPosition: `50% 50%`,
-                height: "250px",
-                width: "250px",
+                height: "450px",
+                width: "450px",
                 borderRadius: "8px",
                 marginRight: "24px",
               }}
@@ -136,8 +130,8 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
                 backgroundImage: `url(${map2})`,
                 backgroundSize: "cover",
                 backgroundPosition: `50% 50%`,
-                height: "250px",
-                width: "250px",
+                height: "450px",
+                width: "450px",
                 borderRadius: "8px",
               }}
             />

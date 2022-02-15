@@ -39,7 +39,7 @@ import seism_4 from "../../../assets/img/seism/seism-4.png";
 import seism_5 from "../../../assets/img/seism/seism-5.png";
 
 const Zone = ({ printRef, theme, selectedCity, projectName }) => {
-  const IconSize = 125;
+  const IconSize = 225;
 
   const [titleLineCount, setTitleLineCount] = useState(0);
 
@@ -67,24 +67,8 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
         padding: "16px",
       }}
     >
-      <img
-        className="bl-zone-card"
-        src={bottomLeft}
-        alt="bottom-left"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
-      />
-      <img
-        className="tr-zone-card"
-        src={topRight}
-        alt="top-right"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
-      />
+      <img className="bl-zone-card" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-zone-card" src={topRight} alt="top-right" />
       <img className="bl-presentation-logo" src={logoMin} alt="logo" />
       <h5
         className="zone-title"
@@ -96,10 +80,11 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           padding: "16px",
           textTransform: "uppercase",
           textAlign: "center",
+          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
-        {projectName ? " "+projectName : " Nom du projet"}
+        {projectName ? " " + projectName : " Nom du projet"}
       </h5>
       <div className="Card-content">
         <h1
@@ -112,6 +97,7 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
             padding: "16px",
             textTransform: "uppercase",
             textAlign: "center",
+            marginTop: "72px",
           }}
         >
           <FontAwesomeIcon icon={faLocationDot} />
@@ -125,20 +111,20 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: titleLineCount > 1 ? "48px" : "80px",
+            marginTop: titleLineCount > 1 ? "104px" : "150px",
           }}
         >
           <Paper
             className="wind-card"
-            elevation={3}
+            elevation={0}
             sx={{
               alignItems: "center",
               textAlign: "center",
-              height: IconSize + 80,
-              width: IconSize + 50,
+              height: IconSize + 100,
+              width: IconSize + 70,
             }}
           >
-            <h3>Vent</h3>
+            <h2>Vent</h2>
             <img
               className="wind-icon"
               style={{
@@ -163,16 +149,16 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           </Paper>
           <Paper
             className="wind-card"
-            elevation={3}
+            elevation={0}
             sx={{
               alignItems: "center",
               textAlign: "center",
-              height: IconSize + 80,
-              width: IconSize + 50,
+              height: IconSize + 100,
+              width: IconSize + 70,
               margin: "0px 24px",
             }}
           >
-            <h3>Neige</h3>
+            <h2>Neige</h2>
             <img
               className="snow-icon"
               style={{
@@ -205,15 +191,15 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
           </Paper>
           <Paper
             className="wind-card"
-            elevation={3}
+            elevation={0}
             sx={{
               alignItems: "center",
               textAlign: "center",
-              height: IconSize + 80,
-              width: IconSize + 50,
+              height: IconSize + 100,
+              width: IconSize + 70,
             }}
           >
-            <h3>Séisme</h3>
+            <h2>Séisme</h2>
             <img
               className="seism-icon"
               style={{

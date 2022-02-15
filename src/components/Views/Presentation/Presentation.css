@@ -4,9 +4,9 @@
 
 .tl-presentation-card {
   position: absolute;
-  top: -12px;
-  left: -6px;
-  width: 50%;
+  top: -20px;
+  left: -50px;
+  width: 45%;
   z-index: 0;
 }
 
@@ -14,6 +14,6 @@
   position: absolute;
   bottom: 0px;
   right: 0px;
-  width: 50%;
+  width: 45%;
   z-index: 0;
 }

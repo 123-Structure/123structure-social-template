@@ -4,6 +4,7 @@ import "./Contact.css";
 import bottomLeft from "../../../assets/img/main-bottom-left.png";
 import topRight from "../../../assets/img/main-top-right.png";
 import logo from "../../../assets/img/logo/123structure-logo-dark.png";
+import france from "../../../assets/img/france.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,24 +27,8 @@ const Contact = ({ printRef, theme, projectName }) => {
         padding: "16px",
       }}
     >
-      <img
-        className="bl-contact-card"
-        src={bottomLeft}
-        alt="bottom-left"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
-      />
-      <img
-        className="tr-contact-card"
-        src={topRight}
-        alt="top-right"
-        style={{
-          width: "50%",
-          zIndex: 0,
-        }}
-      />
+      <img className="bl-contact-card" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-contact-card" src={topRight} alt="top-right" />
       <h5
         className="zone-title"
         style={{
@@ -54,6 +39,7 @@ const Contact = ({ printRef, theme, projectName }) => {
           padding: "16px",
           textTransform: "uppercase",
           textAlign: "center",
+          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
@@ -65,7 +51,7 @@ const Contact = ({ printRef, theme, projectName }) => {
           alt="logo"
           style={{
             width: "50%",
-            marginTop: "128px",
+            marginTop: "175px",
           }}
         />
 
@@ -78,6 +64,7 @@ const Contact = ({ printRef, theme, projectName }) => {
         <h1>
           <FontAwesomeIcon icon={faDesktop} /> 123structure.fr
         </h1>
+        <img src={france} alt="france" style={{ height: "325px", marginTop:"16px" }} />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./App.css";
+// MATERIAL UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 // OTHER
 import Carousel from "react-material-ui-carousel";
@@ -49,8 +50,8 @@ function App() {
       secondary: "#f28e1c",
     },
     dimension: {
-      width: "600px",
-      height: "600px",
+      width: "1000px",
+      height: "1000px",
     },
   };
 
@@ -75,7 +76,9 @@ function App() {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <div className="App">
+      <div
+        className="App"
+      >
         <Settings
           printRef={printRef}
           theme={theme}

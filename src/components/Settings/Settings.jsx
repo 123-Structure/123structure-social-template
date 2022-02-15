@@ -25,13 +25,7 @@ import ScrollArea from "react-scrollbar";
 // LEAFLET
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import {
-  Map,
-  Marker,
-  TileLayer,
-  FeatureGroup,
-  GeoJSON,
-} from "react-leaflet";
+import { Map, Marker, TileLayer, FeatureGroup, GeoJSON } from "react-leaflet";
 import { SimpleMapScreenshoter } from "leaflet-simple-map-screenshoter";
 
 const Settings = ({
@@ -100,7 +94,7 @@ const Settings = ({
 
     for (let i = 0; i <= 3; i++) {
       const element = printRef.current[i];
-      element.style.transform = "scale(2)";
+      // element.style.transform = "scale(2)";
       const canvas = await html2canvas(element);
       const data = await canvas.toDataURL("image/jpg");
       console.log(i, data);
@@ -108,7 +102,7 @@ const Settings = ({
         base64: true,
       });
     }
-    
+
     zip.generateAsync({ type: "blob" }).then((content) => {
       saveAs(content, `${projectName}.zip`);
       cards.style.display = "none";
@@ -156,12 +150,14 @@ const Settings = ({
   });
 
   return (
-    <div className="Settings">
+    <div
+      className="Settings"
+    >
       <Paper
         elevation={3}
         sx={{ width: "100%", height: theme.dimension.height, padding: "16px" }}
       >
-        <ScrollArea style={{ height: "100%" }}>
+        <ScrollArea style={{ height: "100%", marginLeft: "16px" }}>
           <h2>Général</h2>
           <div
             style={{
