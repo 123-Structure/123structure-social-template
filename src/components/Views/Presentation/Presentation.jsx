@@ -15,6 +15,7 @@ const Presentation = ({
   selectedCity,
   picture,
   picturePosition,
+  partner,
 }) => {
   const [titleLineCount, setTitleLineCount] = useState(0);
   const [cityLineCount, setCityLineCount] = useState(0);
@@ -56,7 +57,14 @@ const Presentation = ({
         src={bottomRight}
         alt="bottom-right"
       />
-      <img className="bl-presentation-logo" src={logoMin} alt="logo" />
+      <div className="bl-presentation-logo">
+        <img className="logo" src={logoMin} alt="logo" />
+        {partner !== "" ? (
+          <img className="logo" src={partner} alt="partner" />
+        ) : (
+          <div></div>
+        )}
+      </div>
       <div className="Card-content">
         <h1
           id="presentation-title"
@@ -93,7 +101,7 @@ const Presentation = ({
         {picture === undefined ? (
           <img
             id="main"
-            src="https://via.placeholder.com/300?text=Image+1"
+            src="https://via.placeholder.com/500?text=Image+1"
             alt="main"
             style={{
               borderRadius: "8px",

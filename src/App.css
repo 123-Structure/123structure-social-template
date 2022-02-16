@@ -24,9 +24,25 @@
 }
 
 .bl-presentation-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: absolute;
-  bottom: 8px;
-  left: 12px;
-  width: 12%;
-  z-index: 0;
+  bottom: 24px;
+  left: 24px;
+}
+
+.bl-content-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+}
+
+.logo {
+  width: 120px;
 }

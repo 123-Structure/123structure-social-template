@@ -38,7 +38,7 @@ import seism_3 from "../../../assets/img/seism/seism-3.png";
 import seism_4 from "../../../assets/img/seism/seism-4.png";
 import seism_5 from "../../../assets/img/seism/seism-5.png";
 
-const Zone = ({ printRef, theme, selectedCity, projectName }) => {
+const Zone = ({ printRef, theme, selectedCity, projectName, partner }) => {
   const IconSize = 225;
 
   const [titleLineCount, setTitleLineCount] = useState(0);
@@ -69,7 +69,19 @@ const Zone = ({ printRef, theme, selectedCity, projectName }) => {
     >
       <img className="bl-zone-card" src={bottomLeft} alt="bottom-left" />
       <img className="tr-zone-card" src={topRight} alt="top-right" />
-      <img className="bl-presentation-logo" src={logoMin} alt="logo" />
+      <div className="bl-content-logo">
+        <img className="logo" src={logoMin} alt="logo" />
+        {partner !== "" ? (
+          <img
+            className="logo"
+            src={partner}
+            alt="partner"
+            style={{ marginLeft: "16px" }}
+          />
+        ) : (
+          <div></div>
+        )}
+      </div>
       <h5
         className="zone-title"
         style={{

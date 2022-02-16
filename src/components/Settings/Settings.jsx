@@ -15,6 +15,8 @@ import Select from "@mui/material/Select";
 import CircularProgress from "@mui/material/CircularProgress";
 // ICONS
 import SaveIcon from "@mui/icons-material/Save";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import logoMin from "../../assets/img/logo/123structure-logo-min.png";
 // OTHER
@@ -40,10 +42,12 @@ const Settings = ({
   setProjectName,
   setPicture,
   setPicturePosition,
+  setPartner,
   setMap1,
   setMap2,
 }) => {
-  const fileInput = useRef();
+  const pictureInput = useRef();
+  const partnerInput = useRef();
   const map1Ref = useRef();
   const layerGroupRef = useRef();
   const map2Ref = useRef();
@@ -150,9 +154,7 @@ const Settings = ({
   });
 
   return (
-    <div
-      className="Settings"
-    >
+    <div className="Settings">
       <Paper
         elevation={3}
         sx={{ width: "100%", height: theme.dimension.height, padding: "16px" }}
@@ -232,18 +234,36 @@ const Settings = ({
               </FormControl>
             ) : null}
           </div>
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<PeopleAltIcon />}
+            onClick={() => partnerInput.current.click()}
+            sx={{ marginTop: "16px" }}
+          >
+            Partenanire
+          </Button>
+
+          <input
+            ref={partnerInput}
+            type="file"
+            style={{ display: "none" }}
+            onChange={(e) =>
+              setPartner(window.URL.createObjectURL(e.target.files[0]))
+            }
+          />
           <h2>Présentation</h2>
           <Button
             variant="contained"
             size="large"
             startIcon={<InsertPhotoIcon />}
-            onClick={() => fileInput.current.click()}
+            onClick={() => pictureInput.current.click()}
           >
             Charger une image
           </Button>
 
           <input
-            ref={fileInput}
+            ref={pictureInput}
             type="file"
             style={{ display: "none" }}
             onChange={(e) =>
@@ -268,7 +288,7 @@ const Settings = ({
           <Button
             variant="contained"
             size="large"
-            startIcon={<InsertPhotoIcon />}
+            startIcon={<PhotoCameraIcon />}
             onClick={takeScreenshot}
           >
             Capturer les cartes

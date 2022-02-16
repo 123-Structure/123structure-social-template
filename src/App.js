@@ -37,6 +37,7 @@ function App() {
   const [selectedCity, setSelectedCity] = useState({});
   const [picture, setPicture] = useState();
   const [picturePosition, setPicturePosition] = useState(50);
+  const [partner, setPartner] = useState("");
   const [map1, setMap1] = useState("");
   const [map2, setMap2] = useState("");
   const [autoplay, setAutoplay] = useState(false);
@@ -76,9 +77,7 @@ function App() {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <div
-        className="App"
-      >
+      <div className="App">
         <Settings
           printRef={printRef}
           theme={theme}
@@ -91,6 +90,7 @@ function App() {
           setPicture={setPicture}
           picturePosition={picturePosition}
           setPicturePosition={setPicturePosition}
+          setPartner={setPartner}
           setMap1={setMap1}
           setMap2={setMap2}
         />
@@ -109,6 +109,7 @@ function App() {
               selectedCity={selectedCity}
               picture={picture}
               picturePosition={picturePosition}
+              partner={partner}
             />
             <Maps
               printRef={printRef}
@@ -117,12 +118,14 @@ function App() {
               projectName={projectName}
               map1={map1}
               map2={map2}
+              partner={partner}
             />
             <Zone
               printRef={printRef}
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
+              partner={partner}
             />
             <Contact
               printRef={printRef}
@@ -152,6 +155,7 @@ function App() {
             selectedCity={selectedCity}
             picture={picture}
             picturePosition={picturePosition}
+            partner={partner}
           />
           <Maps
             printRef={printRef}
@@ -160,12 +164,14 @@ function App() {
             projectName={projectName}
             map1={map1}
             map2={map2}
+            partner={partner}
           />
           <Zone
             printRef={printRef}
             theme={theme}
             selectedCity={selectedCity}
             projectName={projectName}
+            partner={partner}
           />
           <Contact
             printRef={printRef}

@@ -11,7 +11,15 @@ import {
   faHouseChimney,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
+const Maps = ({
+  printRef,
+  theme,
+  selectedCity,
+  projectName,
+  map1,
+  map2,
+  partner,
+}) => {
   const [titleLineCount, setTitleLineCount] = useState(0);
 
   const countLines = (el, h) => {
@@ -38,17 +46,21 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
         padding: "16px",
       }}
     >
-      <img
-        className="bl-maps-card"
-        src={bottomLeft}
-        alt="bottom-left"
-      />
-      <img
-        className="tr-maps-card"
-        src={topRight}
-        alt="top-right"
-      />
-      <img className="bl-presentation-logo" src={logoMin} alt="logo" />
+      <img className="bl-maps-card" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-maps-card" src={topRight} alt="top-right" />
+      <div className="bl-content-logo">
+        <img className="logo" src={logoMin} alt="logo" />
+        {partner !== "" ? (
+          <img
+            className="logo"
+            src={partner}
+            alt="partner"
+            style={{ marginLeft: "16px" }}
+          />
+        ) : (
+          <div></div>
+        )}
+      </div>
       <h5
         className="maps-title"
         style={{
@@ -96,10 +108,11 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
           {map1 === "" ? (
             <img
               id="main"
-              src="https://via.placeholder.com/250?text=Map+1"
+              src="https://via.placeholder.com/450?text=Map+1"
               alt="main"
               style={{
                 borderRadius: "8px",
+                marginRight: "24px",
               }}
             />
           ) : (
@@ -118,7 +131,7 @@ const Maps = ({ printRef, theme, selectedCity, projectName, map1, map2 }) => {
           {map2 === "" ? (
             <img
               id="main"
-              src="https://via.placeholder.com/250?text=Map+2"
+              src="https://via.placeholder.com/450?text=Map+2"
               alt="main"
               style={{
                 borderRadius: "8px",
