@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Image.css";
 // IMAGES
 import bottomLeft from "../../../assets/img/light-bottom-left.png";

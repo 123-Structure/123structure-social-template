@@ -48,13 +48,18 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
           ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
           : " Nom de la ville (00)"}
       </h5>
-      <div className="Card-content">
+      <div
+        className="Card-content"
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
+      >
         <img
           src={logo}
           alt="logo"
           style={{
             width: "50%",
-            marginTop: "136px",
           }}
         />
 

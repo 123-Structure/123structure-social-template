@@ -108,6 +108,7 @@ const Settings = ({
 
       case 3:
         return "04_Image 1";
+
       case 4:
         return "05_Image 2";
 
@@ -115,7 +116,10 @@ const Settings = ({
         return "06_Image 3";
 
       case 6:
-        return "07_Contact";
+        return "07_Mots cles";
+
+      case 7:
+        return "08_Contact";
 
       default:
         break;

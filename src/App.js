@@ -10,6 +10,7 @@ import Presentation from "./components/Views/Presentation/Presentation.jsx";
 import Zone from "./components/Views/Zone/Zone.jsx";
 import Maps from "./components/Views/Maps/Maps.jsx";
 import Image from "./components/Views/Image/Image.jsx";
+import Cloud from "./components/Views/Cloud/Cloud";
 import Contact from "./components/Views/Contact/Contact.jsx";
 // IMAGES
 import background from "./assets/img/background.png";
@@ -67,24 +68,28 @@ function App() {
   const subtitle = () => {
     switch (currentView) {
       case 0:
-        return "1/7 - Presentation";
+        return "1/8 - Presentation";
 
       case 1:
-        return "2/7 - Localisation";
+        return "2/8 - Localisation";
 
       case 2:
-        return "3/7 - Zone Sismique - Vent - Neige";
+        return "3/8 - Zone Sismique - Vent - Neige";
 
       case 3:
-        return "4/7 - Image 1";
+        return "4/8 - Image 1";
+
       case 4:
-        return "1/7 - Image 2";
+        return "5/8 - Image 2";
 
       case 5:
-        return "5/7 - Image 3";
+        return "6/8 - Image 3";
 
       case 6:
-        return "7/7 - Contact";
+        return "7/8 - Mots clés";
+
+      case 7:
+        return "8/8 - Contact";
 
       default:
         break;
@@ -194,6 +199,13 @@ function App() {
               imgPosition={image3position}
               logoStyle={logoImage3}
             />
+            <Cloud
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+            />
             <Contact
               printRef={printRef}
               theme={theme}
@@ -284,6 +296,13 @@ function App() {
             index={5}
             imgPosition={image3position}
             logoStyle={logoImage3}
+          />
+          <Cloud
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
+            partner={partner}
           />
           <Contact
             printRef={printRef}
