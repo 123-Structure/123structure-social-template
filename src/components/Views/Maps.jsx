@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Maps.css";
 // IMAGES
-import bottomLeft from "../../../assets/img/light-bottom-left.png";
-import topRight from "../../../assets/img/light-top-right.png";
-import logoMin from "../../../assets/img/logo/123structure-logo-min-dark.png";
+import bottomLeft from "../../assets/img/light-bottom-left.png";
+import topRight from "../../assets/img/light-top-right.png";
+import logoMin from "../../assets/img/logo/123structure-logo-min-dark.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,35 +19,20 @@ const Maps = ({
   map2,
   partner,
 }) => {
-  const [titleLineCount, setTitleLineCount] = useState(0);
-
-  const countLines = (el, h) => {
-    var divHeight = el.offsetHeight;
-    const nbLine = divHeight / h;
-    return nbLine;
-  };
-
-  useEffect(() => {
-    if (document.getElementById("maps-city") !== null) {
-      setTitleLineCount(countLines(document.getElementById("maps-city"), 75));
-    }
-  }, [selectedCity]);
-
   return (
     <div
-      className="maps-card"
+      className="card"
       ref={(e) => (printRef.current[1] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
         backgroundColor: theme.color.light,
         color: theme.color.dark,
-        padding: "16px",
       }}
     >
-      <img className="bl-maps-card" src={bottomLeft} alt="bottom-left" />
-      <img className="tr-maps-card" src={topRight} alt="top-right" />
-      <div className="bl-content-logo">
+      <img className="bl-card-light" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-card-light" src={topRight} alt="top-right" />
+      <div className="logo-container">
         <img className="logo" src={logoMin} alt="logo" />
         {partner !== "" ? (
           <img
@@ -62,47 +46,46 @@ const Maps = ({
         )}
       </div>
       <h5
-        className="maps-title"
+        className="info"
         style={{
           color: theme.color.dark,
           background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
-          backdropFilter: "blur(4px)", // This be the blur
-          borderRadius: "8px",
-          padding: "16px",
-          textTransform: "uppercase",
-          textAlign: "center",
-          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
         {projectName ? " " + projectName : " Nom du projet"}
       </h5>
-      <div className="Card-content">
-        <h1
-          id="maps-city"
-          style={{
-            color: theme.color.dark,
-            background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
-            backdropFilter: "blur(4px)", // This be the blur
-            borderRadius: "8px",
-            padding: "16px",
-            textTransform: "uppercase",
-            textAlign: "center",
-            marginTop: "72px",
-          }}
-        >
-          <FontAwesomeIcon icon={faLocationDot} />
-          {selectedCity.nomCommuneExact
-            ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
-            : " Nom de la ville (00)"}
-        </h1>
+      <div className="card-content">
+        <div className="title-container">
+          <h1
+            className="title"
+            style={{
+              color: theme.color.dark,
+              background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
+            }}
+          >
+            <FontAwesomeIcon icon={faLocationDot} />
+            {selectedCity.nomCommuneExact
+              ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+              : " Nom de la ville (00)"}
+          </h1>
+          <h5
+            className="subtitle"
+            style={{
+              color: theme.color.dark,
+              background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
+            }}
+          >
+            (Localisation)
+          </h5>
+        </div>
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: titleLineCount > 1 ? "104px" : "150px",
+            marginTop: "72px",
           }}
         >
           {map1 === "" ? (

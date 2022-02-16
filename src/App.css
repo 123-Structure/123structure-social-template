@@ -12,28 +12,60 @@
   padding-bottom: 48px;
 }
 
-.Card-content {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.card {
+  position: relative;
+  padding: 16px;
 }
 
-.bl-presentation-logo {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+.tl-card-dark {
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  top: -20px;
+  left: -50px;
+  width: 45%;
+  z-index: 0;
 }
 
-.bl-content-logo {
+.br-card-dark {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 45%;
+  z-index: 0;
+}
+
+.bl-card-light {
+  position: absolute;
+  bottom: -40px;
+  left: -18px;
+  width: 45%;
+  z-index: 0;
+}
+
+.tr-card-light {
+  position: absolute;
+  top: -75px;
+  right: -40px;
+  width: 45%;
+  z-index: 0;
+}
+
+.bl-card-main {
+  position: absolute;
+  bottom: -2px;
+  left: -165px;
+  width: 45%;
+  z-index: 0;
+}
+
+.tr-card-main {
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  width: 30%;
+  z-index: 0;
+}
+
+.logo-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -45,4 +77,57 @@
 
 .logo {
   width: 120px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 64px;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 650px;
+  text-align: center;
+  font-size: 1.25em;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.info {
+  position: absolute;
+  bottom: 4px;
+  right: 24px;
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 650px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.05em;
+}
+
+.card-content {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

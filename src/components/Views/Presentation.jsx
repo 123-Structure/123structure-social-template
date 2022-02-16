@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Presentation.css";
 // IMAGES
-import topLeft from "../../../assets/img/dark-top-left.png";
-import bottomRight from "../../../assets/img/dark-bottom-right.png";
-import logoMin from "../../../assets/img/logo/123structure-logo-min.png";
+import topLeft from "../../assets/img/dark-top-left.png";
+import bottomRight from "../../assets/img/dark-bottom-right.png";
+import logoMin from "../../assets/img/logo/123structure-logo-min.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseChimney } from "@fortawesome/free-solid-svg-icons";
@@ -17,48 +16,41 @@ const Presentation = ({
   picturePosition,
   partner,
 }) => {
-
   const [titleLineCount, setTitleLineCount] = useState(0);
   const [cityLineCount, setCityLineCount] = useState(0);
 
   const countLines = (el, h) => {
     var divHeight = el.offsetHeight;
+    console.log(divHeight);
     const nbLine = divHeight / h;
     return nbLine;
   };
 
   useEffect(() => {
-    if (document.getElementById("presentation-title") !== null) {
-      setTitleLineCount(
-        countLines(document.getElementById("presentation-title"), 75)
-      );
+    if (document.querySelector(".title") !== null) {
+      setTitleLineCount(countLines(document.querySelector(".title"), 86));
     }
-    if (document.getElementById("presentation-city") !== null) {
+    if (document.querySelector(".presentation-city") !== null) {
       setCityLineCount(
-        countLines(document.getElementById("presentation-city"), 43)
+        countLines(document.querySelector(".presentation-city"), 54)
       );
     }
   }, [projectName, selectedCity]);
 
   return (
     <div
-      className="presentation-card"
+      className="card"
       ref={(e) => (printRef.current[0] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
         backgroundColor: theme.color.dark,
         color: theme.color.light,
-        padding: "16px",
       }}
     >
-      <img className="tl-presentation-card" src={topLeft} alt="top-left" />
-      <img
-        className="br-presentation-card"
-        src={bottomRight}
-        alt="bottom-right"
-      />
-      <div className="bl-presentation-logo">
+      <img className="tl-card-dark" src={topLeft} alt="top-left" />
+      <img className="br-card-dark" src={bottomRight} alt="bottom-right" />
+      <div className="logo-container" style={{ flexDirection: "column" }}>
         <img className="logo" src={logoMin} alt="logo" />
         {partner !== "" ? (
           <img className="logo" src={partner} alt="partner" />
@@ -66,33 +58,26 @@ const Presentation = ({
           <div></div>
         )}
       </div>
-      <div className="Card-content">
+      <div className="card-content">
         <h1
-          id="presentation-title"
+          className="title"
           style={{
             color: theme.color.dark,
             background: "rgb(255, 250, 230,0.5)", // Make sure this color has an opacity of less than 1
-            backdropFilter: "blur(4px)", // This be the blur
-            borderRadius: "8px",
-            padding: "16px",
-            textTransform: "uppercase",
-            textAlign: "center",
-            fontSize: "2em",
-            marginTop: "46px",
           }}
         >
           <FontAwesomeIcon icon={faHouseChimney} />
           {projectName ? " " + projectName : " Nom du projet"}
         </h1>
         <h1
-          id="presentation-city"
+          className="presentation-city"
           style={{
             color: theme.color.light,
             fontStyle: "italic",
             textAlign: "center",
             marginTop: titleLineCount > 1 ? "32px" : "64px",
             marginBottom: "64px",
-            fontSize: "2em",
+            fontSize: "2.5em",
           }}
         >
           {selectedCity.nomCommuneExact

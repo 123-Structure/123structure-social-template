@@ -19,6 +19,7 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import logoMin from "../../assets/img/logo/123structure-logo-min.png";
+import house from "../../assets/img/house.png";
 import BurstModeIcon from "@mui/icons-material/BurstMode";
 // OTHER
 import { saveAs } from "file-saver";
@@ -67,6 +68,17 @@ const Settings = ({
   const myIcon = L.icon({
     iconUrl: logoMin,
     iconRetinaUrl: logoMin,
+    iconAnchor: null,
+    popupAnchor: [0, -15],
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: 25,
+  });
+
+  const houseIcon = L.icon({
+    iconUrl: house,
+    iconRetinaUrl: house,
     iconAnchor: null,
     popupAnchor: [0, -15],
     shadowUrl: null,
@@ -383,8 +395,11 @@ const Settings = ({
                   ? selectedCity.longitude
                   : 0,
               ]}
-              icon={myIcon}
+              icon={houseIcon}
             />
+            <Marker position={[47.070399, -1.3362078]} icon={myIcon} />
+            <Marker position={[45.9794406, 4.73999]} icon={myIcon} />
+            <Marker position={[43.318502, -0.4246617]} icon={myIcon} />
           </Map>
           <h2>Images</h2>
           <Button
@@ -426,7 +441,7 @@ const Settings = ({
               control={
                 <Switch onChange={(e) => setLogoImage1(e.target.checked)} />
               }
-              label="Logo 123 STR standard ?"
+              label="Logo 123 STR clair ?"
             />
           </FormGroup>
           <h3>Image 2</h3>
@@ -449,7 +464,7 @@ const Settings = ({
               control={
                 <Switch onChange={(e) => setLogoImage2(e.target.checked)} />
               }
-              label="Logo 123 STR standard ?"
+              label="Logo 123 STR clair ?"
             />
           </FormGroup>
           <h3>Image 3</h3>
@@ -472,7 +487,7 @@ const Settings = ({
               control={
                 <Switch onChange={(e) => setLogoImage3(e.target.checked)} />
               }
-              label="Logo 123 STR standard ?"
+              label="Logo 123 STR clair ?"
             />
           </FormGroup>
           <h2>Visualisation et export</h2>

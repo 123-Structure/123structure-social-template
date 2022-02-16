@@ -6,21 +6,16 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Carousel from "react-material-ui-carousel";
 // COMPONENTS
 import Settings from "./components/Settings/Settings";
-import Presentation from "./components/Views/Presentation/Presentation.jsx";
-import Zone from "./components/Views/Zone/Zone.jsx";
-import Maps from "./components/Views/Maps/Maps.jsx";
-import Image from "./components/Views/Image/Image.jsx";
-import Cloud from "./components/Views/Cloud/Cloud";
-import Contact from "./components/Views/Contact/Contact.jsx";
+import Presentation from "./components/Views/Presentation.jsx";
+import Zone from "./components/Views/Zone.jsx";
+import Maps from "./components/Views/Maps.jsx";
+import Image from "./components/Views/Image.jsx";
+import Cloud from "./components/Views/Cloud.jsx";
+import Contact from "./components/Views/Contact.jsx";
 // IMAGES
 import background from "./assets/img/background.png";
 
 function App() {
-  useEffect(() => {
-    document.body.style.backgroundImage = `url(${background})`;
-    document.body.style.backgroundRepeat = "repeat";
-  }, []);
-
   const customTheme = createTheme({
     palette: {
       type: "light",
@@ -65,7 +60,13 @@ function App() {
     },
   };
 
-  const subtitle = () => {
+  const countLines = (el, h) => {
+    var divHeight = el.offsetHeight;
+    const nbLine = divHeight / h;
+    return nbLine;
+  };
+
+  const info = () => {
     switch (currentView) {
       case 0:
         return "1/8 - Presentation";
@@ -95,6 +96,11 @@ function App() {
         break;
     }
   };
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${background})`;
+    document.body.style.backgroundRepeat = "repeat";
+  }, []);
 
   return (
     <ThemeProvider theme={customTheme}>
@@ -224,7 +230,7 @@ function App() {
               marginTop: "8px",
             }}
           >
-            {subtitle()}
+            {info()}
           </h4>
         </div>
         <div className="download-card" style={{ display: "none" }}>

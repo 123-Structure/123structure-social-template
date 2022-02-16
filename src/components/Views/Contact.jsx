@@ -1,10 +1,9 @@
 import React from "react";
-import "./Contact.css";
 // IMAGES
-import bottomLeft from "../../../assets/img/main-bottom-left.png";
-import topRight from "../../../assets/img/main-top-right.png";
-import logo from "../../../assets/img/logo/123structure-logo-dark.png";
-import france from "../../../assets/img/france.png";
+import bottomLeft from "../../assets/img/main-bottom-left.png";
+import topRight from "../../assets/img/main-top-right.png";
+import logo from "../../assets/img/logo/123structure-logo-dark.png";
+import france from "../../assets/img/france.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,29 +16,22 @@ import {
 const Contact = ({ printRef, theme, projectName, selectedCity }) => {
   return (
     <div
-      className="contact-card"
+      className="card"
       ref={(e) => (printRef.current[6] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
         backgroundColor: theme.color.main,
         color: theme.color.dark,
-        padding: "16px",
       }}
     >
-      <img className="bl-contact-card" src={bottomLeft} alt="bottom-left" />
-      <img className="tr-contact-card" src={topRight} alt="top-right" />
+      <img className="bl-card-main" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-card-main" src={topRight} alt="top-right" />
       <h5
-        className="contact-title"
+        className="info"
         style={{
           color: theme.color.dark,
           background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
-          backdropFilter: "blur(4px)", // This be the blur
-          borderRadius: "8px",
-          padding: "16px",
-          textTransform: "uppercase",
-          textAlign: "center",
-          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
@@ -49,7 +41,7 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
           : " Nom de la ville (00)"}
       </h5>
       <div
-        className="Card-content"
+        className="card-content"
         style={{
           height: "100%",
           width: "100%",

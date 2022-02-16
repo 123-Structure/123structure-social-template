@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Zone.css";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
 // FONT AWESOME ICONS
@@ -9,67 +8,52 @@ import {
   faHouseChimney,
 } from "@fortawesome/free-solid-svg-icons";
 // IMAGES
-import bottomLeft from "../../../assets/img/light-bottom-left.png";
-import topRight from "../../../assets/img/light-top-right.png";
-import logoMin from "../../../assets/img/logo/123structure-logo-min-dark.png";
+import bottomLeft from "../../assets/img/light-bottom-left.png";
+import topRight from "../../assets/img/light-top-right.png";
+import logoMin from "../../assets/img/logo/123structure-logo-min-dark.png";
 // WIND
-import wind_default from "../../../assets/img/wind/wind-default.png";
-import wind_1 from "../../../assets/img/wind/wind-1.png";
-import wind_2 from "../../../assets/img/wind/wind-2.png";
-import wind_3 from "../../../assets/img/wind/wind-3.png";
-import wind_4 from "../../../assets/img/wind/wind-4.png";
-import wind_5 from "../../../assets/img/wind/wind-5.png";
+import wind_default from "../../assets/img/wind/wind-default.png";
+import wind_1 from "../../assets/img/wind/wind-1.png";
+import wind_2 from "../../assets/img/wind/wind-2.png";
+import wind_3 from "../../assets/img/wind/wind-3.png";
+import wind_4 from "../../assets/img/wind/wind-4.png";
+import wind_5 from "../../assets/img/wind/wind-5.png";
 // SNOW
-import snow_default from "../../../assets/img/snow/snow-default.png";
-import snow_0 from "../../../assets/img/snow/snow-0.png";
-import snow_A1 from "../../../assets/img/snow/snow-A1.png";
-import snow_A2 from "../../../assets/img/snow/snow-A2.png";
-import snow_B1 from "../../../assets/img/snow/snow-B1.png";
-import snow_B2 from "../../../assets/img/snow/snow-B2.png";
-import snow_C1 from "../../../assets/img/snow/snow-C1.png";
-import snow_C2 from "../../../assets/img/snow/snow-C2.png";
-import snow_D from "../../../assets/img/snow/snow-D.png";
-import snow_E from "../../../assets/img/snow/snow-E.png";
+import snow_default from "../../assets/img/snow/snow-default.png";
+import snow_0 from "../../assets/img/snow/snow-0.png";
+import snow_A1 from "../../assets/img/snow/snow-A1.png";
+import snow_A2 from "../../assets/img/snow/snow-A2.png";
+import snow_B1 from "../../assets/img/snow/snow-B1.png";
+import snow_B2 from "../../assets/img/snow/snow-B2.png";
+import snow_C1 from "../../assets/img/snow/snow-C1.png";
+import snow_C2 from "../../assets/img/snow/snow-C2.png";
+import snow_D from "../../assets/img/snow/snow-D.png";
+import snow_E from "../../assets/img/snow/snow-E.png";
 // SEISM
-import seism_default from "../../../assets/img/seism/seism-default.png";
-import seism_1 from "../../../assets/img/seism/seism-1.png";
-import seism_2 from "../../../assets/img/seism/seism-2.png";
-import seism_3 from "../../../assets/img/seism/seism-3.png";
-import seism_4 from "../../../assets/img/seism/seism-4.png";
-import seism_5 from "../../../assets/img/seism/seism-5.png";
+import seism_default from "../../assets/img/seism/seism-default.png";
+import seism_1 from "../../assets/img/seism/seism-1.png";
+import seism_2 from "../../assets/img/seism/seism-2.png";
+import seism_3 from "../../assets/img/seism/seism-3.png";
+import seism_4 from "../../assets/img/seism/seism-4.png";
+import seism_5 from "../../assets/img/seism/seism-5.png";
 
 const Zone = ({ printRef, theme, selectedCity, projectName, partner }) => {
   const IconSize = 225;
 
-  const [titleLineCount, setTitleLineCount] = useState(0);
-
-  const countLines = (el, h) => {
-    var divHeight = el.offsetHeight;
-    const nbLine = divHeight / h;
-    return nbLine;
-  };
-
-  useEffect(() => {
-    if (document.getElementById("zone-city") !== null) {
-      setTitleLineCount(countLines(document.getElementById("zone-city"), 75));
-    }
-  }, [selectedCity]);
-
   return (
     <div
-      className="zone-card"
+      className="card"
       ref={(e) => (printRef.current[2] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
         backgroundColor: theme.color.light,
         color: theme.color.dark,
-        padding: "16px",
       }}
     >
-      <img className="bl-zone-card" src={bottomLeft} alt="bottom-left" />
-      <img className="tr-zone-card" src={topRight} alt="top-right" />
-      <div className="bl-content-logo">
+      <img className="bl-card-light" src={bottomLeft} alt="bottom-left" />
+      <img className="tr-card-light" src={topRight} alt="top-right" />
+      <div className="logo-container">
         <img className="logo" src={logoMin} alt="logo" />
         {partner !== "" ? (
           <img
@@ -83,47 +67,46 @@ const Zone = ({ printRef, theme, selectedCity, projectName, partner }) => {
         )}
       </div>
       <h5
-        className="zone-title"
+        className="info"
         style={{
           color: theme.color.dark,
           background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
-          backdropFilter: "blur(4px)", // This be the blur
-          borderRadius: "8px",
-          padding: "16px",
-          textTransform: "uppercase",
-          textAlign: "center",
-          fontSize: "1.05em",
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
         {projectName ? " " + projectName : " Nom du projet"}
       </h5>
-      <div className="Card-content">
-        <h1
-          id="zone-city"
-          style={{
-            color: theme.color.dark,
-            background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
-            backdropFilter: "blur(4px)", // This be the blur
-            borderRadius: "8px",
-            padding: "16px",
-            textTransform: "uppercase",
-            textAlign: "center",
-            marginTop: "72px",
-          }}
-        >
-          <FontAwesomeIcon icon={faLocationDot} />
-          {selectedCity.nomCommuneExact
-            ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
-            : " Nom de la ville (00)"}
-        </h1>
+      <div className="card-content">
+        <div className="title-container">
+          <h1
+            className="title"
+            style={{
+              color: theme.color.dark,
+              background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
+            }}
+          >
+            <FontAwesomeIcon icon={faLocationDot} />
+            {selectedCity.nomCommuneExact
+              ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+              : " Nom de la ville (00)"}
+          </h1>
+          <h5
+            className="subtitle"
+            style={{
+              color: theme.color.dark,
+              background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
+            }}
+          >
+            (Zone d'exposition géographique)
+          </h5>
+        </div>
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: titleLineCount > 1 ? "104px" : "150px",
+            marginTop: "88px",
           }}
         >
           <Paper
