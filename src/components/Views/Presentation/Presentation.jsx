@@ -17,6 +17,7 @@ const Presentation = ({
   picturePosition,
   partner,
 }) => {
+
   const [titleLineCount, setTitleLineCount] = useState(0);
   const [cityLineCount, setCityLineCount] = useState(0);
 
@@ -101,7 +102,7 @@ const Presentation = ({
         {picture === undefined ? (
           <img
             id="main"
-            src="https://via.placeholder.com/500?text=Image+1"
+            src="https://via.placeholder.com/500?text=Image+Principale"
             alt="main"
             style={{
               borderRadius: "8px",

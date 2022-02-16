@@ -9,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import Presentation from "./components/Views/Presentation/Presentation.jsx";
 import Zone from "./components/Views/Zone/Zone.jsx";
 import Maps from "./components/Views/Maps/Maps.jsx";
+import Image from "./components/Views/Image/Image.jsx";
 import Contact from "./components/Views/Contact/Contact.jsx";
 // IMAGES
 import background from "./assets/img/background.png";
@@ -37,6 +38,13 @@ function App() {
   const [selectedCity, setSelectedCity] = useState({});
   const [picture, setPicture] = useState();
   const [picturePosition, setPicturePosition] = useState(50);
+  const [image, setImage] = useState([]);
+  const [image1position, setImage1position] = useState(50);
+  const [image2position, setImage2position] = useState(50);
+  const [image3position, setImage3position] = useState(50);
+  const [logoImage1, setLogoImage1] = useState(false);
+  const [logoImage2, setLogoImage2] = useState(false);
+  const [logoImage3, setLogoImage3] = useState(false);
   const [partner, setPartner] = useState("");
   const [map1, setMap1] = useState("");
   const [map2, setMap2] = useState("");
@@ -59,16 +67,24 @@ function App() {
   const subtitle = () => {
     switch (currentView) {
       case 0:
-        return "1/4 - Presentation";
+        return "1/7 - Presentation";
 
       case 1:
-        return "2/4 - Localisation";
+        return "2/7 - Localisation";
 
       case 2:
-        return "3/4 - Zone Sismique / Vent / Neige";
+        return "3/7 - Zone Sismique - Vent - Neige";
 
       case 3:
-        return "4/4 - Contact";
+        return "4/7 - Image 1";
+      case 4:
+        return "1/7 - Image 2";
+
+      case 5:
+        return "5/7 - Image 3";
+
+      case 6:
+        return "7/7 - Contact";
 
       default:
         break;
@@ -93,6 +109,13 @@ function App() {
           setPartner={setPartner}
           setMap1={setMap1}
           setMap2={setMap2}
+          setImage={setImage}
+          setImage1position={setImage1position}
+          setImage2position={setImage2position}
+          setImage3position={setImage3position}
+          setLogoImage1={setLogoImage1}
+          setLogoImage2={setLogoImage2}
+          setLogoImage3={setLogoImage3}
         />
         <div className="Preview">
           <Carousel
@@ -127,9 +150,54 @@ function App() {
               projectName={projectName}
               partner={partner}
             />
+            {/* {image.map((img, index) => (
+              <Image
+                printRef={printRef}
+                theme={theme}
+                selectedCity={selectedCity}
+                projectName={projectName}
+                partner={partner}
+                img={img}
+                key={index}
+              />
+            ))} */}
+            <Image
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+              img={image[0]}
+              index={3}
+              imgPosition={image1position}
+              logoStyle={logoImage1}
+            />
+            <Image
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+              img={image[1]}
+              index={4}
+              imgPosition={image2position}
+              logoStyle={logoImage2}
+            />
+            <Image
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+              img={image[2]}
+              index={5}
+              imgPosition={image3position}
+              logoStyle={logoImage3}
+            />
             <Contact
               printRef={printRef}
               theme={theme}
+              selectedCity={selectedCity}
               projectName={projectName}
             />
           </Carousel>
@@ -173,9 +241,54 @@ function App() {
             projectName={projectName}
             partner={partner}
           />
+          {/* {image.map((img, index) => (
+              <Image
+                printRef={printRef}
+                theme={theme}
+                selectedCity={selectedCity}
+                projectName={projectName}
+                partner={partner}
+                img={img}
+                key={index}
+              />
+            ))} */}
+          <Image
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
+            partner={partner}
+            img={image[0]}
+            index={3}
+            imgPosition={image1position}
+            logoStyle={logoImage1}
+          />
+          <Image
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
+            partner={partner}
+            img={image[1]}
+            index={4}
+            imgPosition={image2position}
+            logoStyle={logoImage2}
+          />
+          <Image
+            printRef={printRef}
+            theme={theme}
+            selectedCity={selectedCity}
+            projectName={projectName}
+            partner={partner}
+            img={image[2]}
+            index={5}
+            imgPosition={image3position}
+            logoStyle={logoImage3}
+          />
           <Contact
             printRef={printRef}
             theme={theme}
+            selectedCity={selectedCity}
             projectName={projectName}
           />
         </div>

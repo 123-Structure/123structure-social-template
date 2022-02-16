@@ -29,8 +29,8 @@ const Maps = ({
   };
 
   useEffect(() => {
-    if (document.getElementById("zone-city") !== null) {
-      setTitleLineCount(countLines(document.getElementById("zone-city"), 75));
+    if (document.getElementById("maps-city") !== null) {
+      setTitleLineCount(countLines(document.getElementById("maps-city"), 75));
     }
   }, [selectedCity]);
 
@@ -79,7 +79,7 @@ const Maps = ({
       </h5>
       <div className="Card-content">
         <h1
-          id="zone-city"
+          id="maps-city"
           style={{
             color: theme.color.dark,
             background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1

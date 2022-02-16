@@ -16,9 +16,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 // ICONS
 import SaveIcon from "@mui/icons-material/Save";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import logoMin from "../../assets/img/logo/123structure-logo-min.png";
+import BurstModeIcon from "@mui/icons-material/BurstMode";
 // OTHER
 import { saveAs } from "file-saver";
 import html2canvas from "html2canvas";
@@ -45,8 +46,16 @@ const Settings = ({
   setPartner,
   setMap1,
   setMap2,
+  setImage,
+  setImage1position,
+  setImage2position,
+  setImage3position,
+  setLogoImage1,
+  setLogoImage2,
+  setLogoImage3,
 }) => {
   const pictureInput = useRef();
+  const imageInput = useRef();
   const partnerInput = useRef();
   const map1Ref = useRef();
   const layerGroupRef = useRef();
@@ -86,6 +95,33 @@ const Settings = ({
     });
   };
 
+  const title = (i) => {
+    switch (i) {
+      case 0:
+        return "01_Presentation";
+
+      case 1:
+        return "02_Localisation";
+
+      case 2:
+        return "03_Zone Sismique - Vent - Neige";
+
+      case 3:
+        return "04_Image 1";
+      case 4:
+        return "05_Image 2";
+
+      case 5:
+        return "06_Image 3";
+
+      case 6:
+        return "07_Contact";
+
+      default:
+        break;
+    }
+  };
+
   const handleDownloadImage = async () => {
     const zip = require("jszip")();
 
@@ -96,21 +132,25 @@ const Settings = ({
     const preview = await document.querySelector(".Preview");
     preview.style.display = "none";
 
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i <= printRef.current.length - 1; i++) {
       const element = printRef.current[i];
       // element.style.transform = "scale(2)";
       const canvas = await html2canvas(element);
       const data = await canvas.toDataURL("image/jpg");
       console.log(i, data);
-      zip.file(`${i}.jpg`, data.replace(/^data:image\/(png|jpg);base64,/, ""), {
-        base64: true,
-      });
+      zip.file(
+        `${title(i)}.jpg`,
+        data.replace(/^data:image\/(png|jpg);base64,/, ""),
+        {
+          base64: true,
+        }
+      );
     }
 
     zip.generateAsync({ type: "blob" }).then((content) => {
       saveAs(content, `${projectName}.zip`);
       cards.style.display = "none";
-      preview.style.display = "";
+      preview.style.display = "block";
     });
   };
 
@@ -222,11 +262,7 @@ const Settings = ({
                   onChange={(e) => handleSelectedCity(e.target.value)}
                 >
                   {sismoAPI.map((option, key) => (
-                    <MenuItem
-                      key={key}
-                      value={option.nomCommuneExact}
-                      // onClick={setIndex(key)}
-                    >
+                    <MenuItem key={key} value={option.nomCommuneExact}>
                       {option.nomCommuneExact}
                     </MenuItem>
                   ))}
@@ -241,12 +277,13 @@ const Settings = ({
             onClick={() => partnerInput.current.click()}
             sx={{ marginTop: "16px" }}
           >
-            Partenanire
+            Partenaire
           </Button>
 
           <input
             ref={partnerInput}
             type="file"
+            accept="image/*"
             style={{ display: "none" }}
             onChange={(e) =>
               setPartner(window.URL.createObjectURL(e.target.files[0]))
@@ -265,15 +302,16 @@ const Settings = ({
           <input
             ref={pictureInput}
             type="file"
+            accept="image/*"
             style={{ display: "none" }}
             onChange={(e) =>
               setPicture(window.URL.createObjectURL(e.target.files[0]))
             }
           />
           <div>
-            <p>Positioner l'image 1</p>
+            <p>Positioner l'image principale</p>
             <Slider
-              aria-label="position"
+              aria-label="position1"
               defaultValue={50}
               valueLabelDisplay="auto"
               onChange={(e) => setPicturePosition(e.target.value)}
@@ -344,6 +382,95 @@ const Settings = ({
               icon={myIcon}
             />
           </Map>
+          <h2>Images</h2>
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<BurstModeIcon />}
+            onClick={() => imageInput.current.click()}
+          >
+            Charger plusieurs images
+          </Button>
+          <h3>Image 1</h3>
+          <input
+            ref={imageInput}
+            type="file"
+            multiple
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const files = Array.from(e.target.files);
+              setImage(files.map((file) => window.URL.createObjectURL(file)));
+            }}
+          />
+          <div>
+            <p>Positioner l'image 1</p>
+            <Slider
+              aria-label="position1"
+              defaultValue={50}
+              valueLabelDisplay="auto"
+              onChange={(e) => setImage1position(e.target.value)}
+              // step={1}
+              // marks
+              min={1}
+              max={100}
+              sx={{ width: "75%" }}
+            />
+          </div>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch onChange={(e) => setLogoImage1(e.target.checked)} />
+              }
+              label="Logo 123 STR standard ?"
+            />
+          </FormGroup>
+          <h3>Image 2</h3>
+          <div>
+            <p>Positioner l'image 2</p>
+            <Slider
+              aria-label="position1"
+              defaultValue={50}
+              valueLabelDisplay="auto"
+              onChange={(e) => setImage2position(e.target.value)}
+              // step={1}
+              // marks
+              min={1}
+              max={100}
+              sx={{ width: "75%" }}
+            />
+          </div>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch onChange={(e) => setLogoImage2(e.target.checked)} />
+              }
+              label="Logo 123 STR standard ?"
+            />
+          </FormGroup>
+          <h3>Image 3</h3>
+          <div>
+            <p>Positioner l'image 3</p>
+            <Slider
+              aria-label="position1"
+              defaultValue={50}
+              valueLabelDisplay="auto"
+              onChange={(e) => setImage3position(e.target.value)}
+              // step={1}
+              // marks
+              min={1}
+              max={100}
+              sx={{ width: "75%" }}
+            />
+          </div>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch onChange={(e) => setLogoImage3(e.target.checked)} />
+              }
+              label="Logo 123 STR standard ?"
+            />
+          </FormGroup>
           <h2>Visualisation et export</h2>
           <FormGroup sx={{ width: "35%" }}>
             <FormControlLabel

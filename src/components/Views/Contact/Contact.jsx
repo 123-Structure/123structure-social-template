@@ -14,11 +14,11 @@ import {
   faHouseChimney,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Contact = ({ printRef, theme, projectName }) => {
+const Contact = ({ printRef, theme, projectName, selectedCity }) => {
   return (
     <div
       className="contact-card"
-      ref={(e) => (printRef.current[3] = e)}
+      ref={(e) => (printRef.current[6] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
@@ -30,7 +30,7 @@ const Contact = ({ printRef, theme, projectName }) => {
       <img className="bl-contact-card" src={bottomLeft} alt="bottom-left" />
       <img className="tr-contact-card" src={topRight} alt="top-right" />
       <h5
-        className="zone-title"
+        className="contact-title"
         style={{
           color: theme.color.dark,
           background: "rgb(35, 31, 32,0.1)", // Make sure this color has an opacity of less than 1
@@ -43,7 +43,10 @@ const Contact = ({ printRef, theme, projectName }) => {
         }}
       >
         <FontAwesomeIcon icon={faHouseChimney} />
-        {projectName ? " " + projectName : " Nom du projet"}
+        {projectName ? " " + projectName : " Nom du projet"} -
+        {selectedCity.nomCommuneExact
+          ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+          : " Nom de la ville (00)"}
       </h5>
       <div className="Card-content">
         <img
@@ -51,7 +54,7 @@ const Contact = ({ printRef, theme, projectName }) => {
           alt="logo"
           style={{
             width: "50%",
-            marginTop: "175px",
+            marginTop: "136px",
           }}
         />
 
@@ -64,7 +67,11 @@ const Contact = ({ printRef, theme, projectName }) => {
         <h1>
           <FontAwesomeIcon icon={faDesktop} /> 123structure.fr
         </h1>
-        <img src={france} alt="france" style={{ height: "325px", marginTop:"16px" }} />
+        <img
+          src={france}
+          alt="france"
+          style={{ height: "325px", marginTop: "16px" }}
+        />
       </div>
     </div>
   );
