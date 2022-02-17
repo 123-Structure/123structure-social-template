@@ -48,6 +48,12 @@ const Settings = ({
   setMap1,
   setMap2,
   setImage,
+  legende1,
+  legende2,
+  legende3,
+  setLegende1,
+  setLegende2,
+  setLegende3,
   setImage1position,
   setImage2position,
   setImage3position,
@@ -113,25 +119,25 @@ const Settings = ({
         return "01_Presentation";
 
       case 1:
-        return "02_Localisation";
+        return "2/8 - Localisation";
 
       case 2:
-        return "03_Zone Sismique - Vent - Neige";
+        return "3/8 - Zone Sismique - Vent - Neige";
 
       case 3:
-        return "04_Image 1";
+        return "4/8 - Image 1";
 
       case 4:
-        return "05_Image 2";
+        return "5/8 - Image 2";
 
       case 5:
-        return "06_Image 3";
+        return "6/8 - Image 3";
+
+      // case 6:
+      //   return "7/8 - Mots clés";
 
       case 6:
-        return "07_Mots cles";
-
-      case 7:
-        return "08_Contact";
+        return "8/8 - Contact";
 
       default:
         break;
@@ -140,6 +146,9 @@ const Settings = ({
 
   const handleDownloadImage = async () => {
     const zip = require("jszip")();
+
+    const loading = await document.querySelector(".loading");
+    loading.style.display = "flex";
 
     const cards = await document.querySelector(".download-card");
     cards.style.display = "flex";
@@ -167,6 +176,7 @@ const Settings = ({
       saveAs(content, `${projectName}.zip`);
       cards.style.display = "none";
       preview.style.display = "block";
+      loading.style.display = "none";
     });
   };
 
@@ -295,7 +305,6 @@ const Settings = ({
           >
             Partenaire
           </Button>
-
           <input
             ref={partnerInput}
             type="file"
@@ -314,7 +323,6 @@ const Settings = ({
           >
             Charger une image
           </Button>
-
           <input
             ref={pictureInput}
             type="file"
@@ -410,7 +418,16 @@ const Settings = ({
           >
             Charger plusieurs images
           </Button>
-          <h3>Image 1</h3>
+          <h3>Image 1</h3>{" "}
+          <TextField
+            id="outlined-basic"
+            label="Légende"
+            variant="outlined"
+            value={legende1}
+            onChange={(e) => {
+              setLegende1(e.target.value);
+            }}
+          />
           <input
             ref={imageInput}
             type="file"
@@ -445,6 +462,15 @@ const Settings = ({
             />
           </FormGroup>
           <h3>Image 2</h3>
+          <TextField
+            id="outlined-basic"
+            label="Légende"
+            variant="outlined"
+            value={legende2}
+            onChange={(e) => {
+              setLegende2(e.target.value);
+            }}
+          />
           <div>
             <p>Positioner l'image 2</p>
             <Slider
@@ -468,6 +494,15 @@ const Settings = ({
             />
           </FormGroup>
           <h3>Image 3</h3>
+          <TextField
+            id="outlined-basic"
+            label="Légende"
+            variant="outlined"
+            value={legende3}
+            onChange={(e) => {
+              setLegende3(e.target.value);
+            }}
+          />
           <div>
             <p>Positioner l'image 3</p>
             <Slider

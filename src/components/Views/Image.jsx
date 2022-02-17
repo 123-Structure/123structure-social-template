@@ -18,6 +18,7 @@ const Image = ({
   index,
   imgPosition,
   logoStyle,
+  legende,
 }) => {
   return (
     <div
@@ -49,19 +50,44 @@ const Image = ({
           <div></div>
         )}
       </div>
-      <h5
-        className="info"
+      <div
         style={{
-          color: theme.color.dark,
-          background: "rgb(255, 250, 230,0.5)", // Make sure this color has an opacity of less than 1
+          position: "absolute",
+          bottom: "4px",
+          right: "24px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          alignItems: "flex-end",
         }}
       >
-        <FontAwesomeIcon icon={faHouseChimney} />
-        {projectName ? " " + projectName : " Nom du projet"} -
-        {selectedCity.nomCommuneExact
-          ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
-          : " Nom de la ville (00)"}
-      </h5>
+        {legende !== "" ? (
+          <h5
+            className="legende"
+            style={{
+              color: theme.color.dark,
+              background: "rgb(255, 250, 230,0.5)", // Make sure this color has an opacity of less than 1
+            }}
+          >
+            {legende}
+          </h5>
+        ) : (
+          <div></div>
+        )}
+        <h5
+          className="info-image"
+          style={{
+            color: theme.color.dark,
+            background: "rgb(255, 250, 230,0.5)", // Make sure this color has an opacity of less than 1
+          }}
+        >
+          <FontAwesomeIcon icon={faHouseChimney} />
+          {projectName ? " " + projectName : " Nom du projet"} -
+          {selectedCity.nomCommuneExact
+            ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
+            : " Nom de la ville (00)"}
+        </h5>
+      </div>
       {img === undefined ? (
         <img
           id="main"

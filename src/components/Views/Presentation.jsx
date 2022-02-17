@@ -21,7 +21,6 @@ const Presentation = ({
 
   const countLines = (el, h) => {
     var divHeight = el.offsetHeight;
-    console.log(divHeight);
     const nbLine = divHeight / h;
     return nbLine;
   };

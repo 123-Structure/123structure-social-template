@@ -12,6 +12,7 @@ import Maps from "./components/Views/Maps.jsx";
 import Image from "./components/Views/Image.jsx";
 import Cloud from "./components/Views/Cloud.jsx";
 import Contact from "./components/Views/Contact.jsx";
+import Loading from "./components/Loading.jsx";
 // IMAGES
 import background from "./assets/img/background.png";
 
@@ -35,6 +36,9 @@ function App() {
   const [picture, setPicture] = useState();
   const [picturePosition, setPicturePosition] = useState(50);
   const [image, setImage] = useState([]);
+  const [legende1, setLegende1] = useState("");
+  const [legende2, setLegende2] = useState("");
+  const [legende3, setLegende3] = useState("");
   const [image1position, setImage1position] = useState(50);
   const [image2position, setImage2position] = useState(50);
   const [image3position, setImage3position] = useState(50);
@@ -60,12 +64,6 @@ function App() {
     },
   };
 
-  const countLines = (el, h) => {
-    var divHeight = el.offsetHeight;
-    const nbLine = divHeight / h;
-    return nbLine;
-  };
-
   const info = () => {
     switch (currentView) {
       case 0:
@@ -86,10 +84,10 @@ function App() {
       case 5:
         return "6/8 - Image 3";
 
-      case 6:
-        return "7/8 - Mots clés";
+      // case 6:
+      //   return "7/8 - Mots clés";
 
-      case 7:
+      case 6:
         return "8/8 - Contact";
 
       default:
@@ -105,6 +103,7 @@ function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="App">
+        <Loading theme={theme} />
         <Settings
           printRef={printRef}
           theme={theme}
@@ -121,6 +120,12 @@ function App() {
           setMap1={setMap1}
           setMap2={setMap2}
           setImage={setImage}
+          legende1={legende1}
+          legende2={legende2}
+          legende3={legende3}
+          setLegende1={setLegende1}
+          setLegende2={setLegende2}
+          setLegende3={setLegende3}
           setImage1position={setImage1position}
           setImage2position={setImage2position}
           setImage3position={setImage3position}
@@ -182,6 +187,7 @@ function App() {
               index={3}
               imgPosition={image1position}
               logoStyle={logoImage1}
+              legende={legende1}
             />
             <Image
               printRef={printRef}
@@ -193,6 +199,7 @@ function App() {
               index={4}
               imgPosition={image2position}
               logoStyle={logoImage2}
+              legende={legende2}
             />
             <Image
               printRef={printRef}
@@ -204,14 +211,15 @@ function App() {
               index={5}
               imgPosition={image3position}
               logoStyle={logoImage3}
+              legende={legende3}
             />
-            <Cloud
+            {/* <Cloud
               printRef={printRef}
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
               partner={partner}
-            />
+            /> */}
             <Contact
               printRef={printRef}
               theme={theme}
@@ -280,6 +288,7 @@ function App() {
             index={3}
             imgPosition={image1position}
             logoStyle={logoImage1}
+            legende={legende1}
           />
           <Image
             printRef={printRef}
@@ -291,6 +300,7 @@ function App() {
             index={4}
             imgPosition={image2position}
             logoStyle={logoImage2}
+            legende={legende2}
           />
           <Image
             printRef={printRef}
@@ -302,14 +312,15 @@ function App() {
             index={5}
             imgPosition={image3position}
             logoStyle={logoImage3}
+            legende={legende3}
           />
-          <Cloud
-            printRef={printRef}
-            theme={theme}
-            selectedCity={selectedCity}
-            projectName={projectName}
-            partner={partner}
-          />
+          {/* <Cloud
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+            /> */}
           <Contact
             printRef={printRef}
             theme={theme}
