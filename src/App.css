@@ -86,8 +86,8 @@
   justify-content: flex-start;
   align-items: center;
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  bottom: 45px;
+  left: 48px;
 }
 
 .logo {
@@ -156,6 +156,14 @@
   text-align: center;
   font-size: 1.05em;
   margin-bottom: 0;
+}
+
+.geo-card {
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  background: rgb(242,242,242,0.8)
 }
 
 .card-content {

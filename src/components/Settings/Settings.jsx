@@ -1,4 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  // useEffect,
+  useRef,
+} from "react";
 import "./Settings.css";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
@@ -15,11 +19,11 @@ import Select from "@mui/material/Select";
 import CircularProgress from "@mui/material/CircularProgress";
 // ICONS
 import SaveIcon from "@mui/icons-material/Save";
-import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+// import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import logoMin from "../../assets/img/logo/123structure-logo-min.png";
-import house from "../../assets/img/house.png";
+// import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
+// import logoMin from "../../assets/img/logo/123structure-logo-min.png";
+// import house from "../../assets/img/house.png";
 import BurstModeIcon from "@mui/icons-material/BurstMode";
 // OTHER
 import { saveAs } from "file-saver";
@@ -27,10 +31,10 @@ import html2canvas from "html2canvas";
 import axios from "axios";
 import ScrollArea from "react-scrollbar";
 // LEAFLET
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import { Map, Marker, TileLayer, FeatureGroup, GeoJSON } from "react-leaflet";
-import { SimpleMapScreenshoter } from "leaflet-simple-map-screenshoter";
+// import L from "leaflet";
+// import "leaflet/dist/leaflet.css";
+// import { Map, Marker, TileLayer, FeatureGroup, GeoJSON } from "react-leaflet";
+// import { SimpleMapScreenshoter } from "leaflet-simple-map-screenshoter";
 
 const Settings = ({
   printRef,
@@ -42,8 +46,8 @@ const Settings = ({
   setAutoplay,
   setSelectedCity,
   setProjectName,
-  setPicture,
-  setPicturePosition,
+  // setPicture,
+  // setPicturePosition,
   setPartner,
   setMap1,
   setMap2,
@@ -60,38 +64,41 @@ const Settings = ({
   setLogoImage1,
   setLogoImage2,
   setLogoImage3,
+  setLogoLightImage1,
+  setLogoLightImage2,
+  setLogoLightImage3,
 }) => {
-  const pictureInput = useRef();
+  // const pictureInput = useRef();
   const imageInput = useRef();
   const partnerInput = useRef();
-  const map1Ref = useRef();
-  const layerGroupRef = useRef();
-  const map2Ref = useRef();
+  // const map1Ref = useRef();
+  // const layerGroupRef = useRef();
+  // const map2Ref = useRef();
 
   const [sismoAPI, setSismoAPI] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  const myIcon = L.icon({
-    iconUrl: logoMin,
-    iconRetinaUrl: logoMin,
-    iconAnchor: null,
-    popupAnchor: [0, -15],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: 25,
-  });
+  // const myIcon = L.icon({
+  //   iconUrl: logoMin,
+  //   iconRetinaUrl: logoMin,
+  //   iconAnchor: null,
+  //   popupAnchor: [0, -15],
+  //   shadowUrl: null,
+  //   shadowSize: null,
+  //   shadowAnchor: null,
+  //   iconSize: 25,
+  // });
 
-  const houseIcon = L.icon({
-    iconUrl: house,
-    iconRetinaUrl: house,
-    iconAnchor: null,
-    popupAnchor: [0, -15],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: 25,
-  });
+  // const houseIcon = L.icon({
+  //   iconUrl: house,
+  //   iconRetinaUrl: house,
+  //   iconAnchor: null,
+  //   popupAnchor: [0, -15],
+  //   shadowUrl: null,
+  //   shadowSize: null,
+  //   shadowAnchor: null,
+  //   iconSize: 25,
+  // });
 
   const handleSearchValueChange = async (e) => {
     await setSearchValue(e.target.value);
@@ -116,28 +123,16 @@ const Settings = ({
   const title = (i) => {
     switch (i) {
       case 0:
-        return "01_Presentation";
+        return "1 - Image 1";
 
       case 1:
-        return "2/8 - Localisation";
+        return "2 - Image 2";
 
       case 2:
-        return "3/8 - Zone Sismique - Vent - Neige";
+        return "3 - Image 3";
 
       case 3:
-        return "4/8 - Image 1";
-
-      case 4:
-        return "5/8 - Image 2";
-
-      case 5:
-        return "6/8 - Image 3";
-
-      // case 6:
-      //   return "7/8 - Mots clés";
-
-      case 6:
-        return "8/8 - Contact";
+        return "4 - Contact";
 
       default:
         break;
@@ -162,7 +157,7 @@ const Settings = ({
       // element.style.transform = "scale(2)";
       const canvas = await html2canvas(element);
       const data = await canvas.toDataURL("image/jpg");
-      console.log(i, data);
+      console.log(i, data.replace(/^data:image\/(png|jpg);base64,/, ""));
       zip.file(
         `${title(i)}.jpg`,
         data.replace(/^data:image\/(png|jpg);base64,/, ""),
@@ -173,51 +168,51 @@ const Settings = ({
     }
 
     zip.generateAsync({ type: "blob" }).then((content) => {
-      saveAs(content, `${projectName}.zip`);
+      saveAs(content, "social.zip");
       cards.style.display = "none";
       preview.style.display = "block";
       loading.style.display = "none";
     });
   };
 
-  const takeScreenshot = () => {
-    const map1 = map1Ref.current.leafletElement;
-    const screenshot1 = new SimpleMapScreenshoter({
-      hidden: true, // hide screen btn on map
-    }).addTo(map1);
-    screenshot1
-      .takeScreen("blob")
-      .then((blob) => {
-        setMap1(URL.createObjectURL(blob));
-      })
-      .catch((e) => {
-        alert(e.toString());
-      });
+  // const takeScreenshot = () => {
+  //   const map1 = map1Ref.current.leafletElement;
+  //   const screenshot1 = new SimpleMapScreenshoter({
+  //     hidden: true, // hide screen btn on map
+  //   }).addTo(map1);
+  //   screenshot1
+  //     .takeScreen("blob")
+  //     .then((blob) => {
+  //       setMap1(URL.createObjectURL(blob));
+  //     })
+  //     .catch((e) => {
+  //       alert(e.toString());
+  //     });
 
-    const map2 = map2Ref.current.leafletElement;
-    const screenshot2 = new SimpleMapScreenshoter({
-      hidden: true, // hide screen btn on map
-    }).addTo(map2);
-    screenshot2
-      .takeScreen("blob")
-      .then((blob) => {
-        setMap2(URL.createObjectURL(blob));
-      })
-      .catch((e) => {
-        alert(e.toString());
-      });
-  };
+  //   const map2 = map2Ref.current.leafletElement;
+  //   const screenshot2 = new SimpleMapScreenshoter({
+  //     hidden: true, // hide screen btn on map
+  //   }).addTo(map2);
+  //   screenshot2
+  //     .takeScreen("blob")
+  //     .then((blob) => {
+  //       setMap2(URL.createObjectURL(blob));
+  //     })
+  //     .catch((e) => {
+  //       alert(e.toString());
+  //     });
+  // };
 
-  useEffect(() => {
-    if (selectedCity.border !== undefined) {
-      const map = map1Ref.current.leafletElement;
-      const layerGroup = layerGroupRef.current.leafletElement;
-      const bounds = layerGroup.getBounds();
-      if (bounds.isValid()) {
-        map.fitBounds(bounds);
-      }
-    }
-  });
+  // useEffect(() => {
+  //   if (selectedCity.border !== undefined) {
+  //     const map = map1Ref.current.leafletElement;
+  //     const layerGroup = layerGroupRef.current.leafletElement;
+  //     const bounds = layerGroup.getBounds();
+  //     if (bounds.isValid()) {
+  //       map.fitBounds(bounds);
+  //     }
+  //   }
+  // });
 
   return (
     <div className="Settings">
@@ -235,7 +230,7 @@ const Settings = ({
               justifyContent: "flex-start",
             }}
           >
-            <TextField
+            {/* <TextField
               id="outlined-basic"
               label="Nom du projet"
               variant="outlined"
@@ -243,7 +238,7 @@ const Settings = ({
               onChange={(e) => {
                 setProjectName(e.target.value);
               }}
-            />
+            /> */}
             <div
               style={{
                 display: "flex",
@@ -314,7 +309,7 @@ const Settings = ({
               setPartner(window.URL.createObjectURL(e.target.files[0]))
             }
           />
-          <h2>Présentation</h2>
+          {/* <h2>Présentation</h2>
           <Button
             variant="contained"
             size="large"
@@ -368,11 +363,6 @@ const Settings = ({
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {/* <Marker position={[51.505, -0.09]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker> */}
             <FeatureGroup ref={layerGroupRef}>
               <GeoJSON
                 key={selectedCity.nomCommuneExact}
@@ -408,7 +398,7 @@ const Settings = ({
             <Marker position={[47.070399, -1.3362078]} icon={myIcon} />
             <Marker position={[45.9794406, 4.73999]} icon={myIcon} />
             <Marker position={[43.318502, -0.4246617]} icon={myIcon} />
-          </Map>
+          </Map> */}
           <h2>Images</h2>
           <Button
             variant="contained"
@@ -458,6 +448,14 @@ const Settings = ({
               control={
                 <Switch onChange={(e) => setLogoImage1(e.target.checked)} />
               }
+              label="Logo 123 STR sombre ?"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={(e) => setLogoLightImage1(e.target.checked)}
+                />
+              }
               label="Logo 123 STR clair ?"
             />
           </FormGroup>
@@ -490,6 +488,14 @@ const Settings = ({
               control={
                 <Switch onChange={(e) => setLogoImage2(e.target.checked)} />
               }
+              label="Logo 123 STR sombre ?"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={(e) => setLogoLightImage2(e.target.checked)}
+                />
+              }
               label="Logo 123 STR clair ?"
             />
           </FormGroup>
@@ -521,6 +527,14 @@ const Settings = ({
             <FormControlLabel
               control={
                 <Switch onChange={(e) => setLogoImage3(e.target.checked)} />
+              }
+              label="Logo 123 STR sombre ?"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={(e) => setLogoLightImage3(e.target.checked)}
+                />
               }
               label="Logo 123 STR clair ?"
             />

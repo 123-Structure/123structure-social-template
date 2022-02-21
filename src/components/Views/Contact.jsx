@@ -17,7 +17,7 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
   return (
     <div
       className="card"
-      ref={(e) => (printRef.current[6] = e)}
+      ref={(e) => (printRef.current[3] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,
@@ -27,7 +27,7 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
     >
       <img className="bl-card-main" src={bottomLeft} alt="bottom-left" />
       <img className="tr-card-main" src={topRight} alt="top-right" />
-      <h5
+      {/* <h5
         className="info"
         style={{
           color: theme.color.dark,
@@ -39,7 +39,7 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
         {selectedCity.nomCommuneExact
           ? ` ${selectedCity.nomCommuneExact} (${selectedCity.codeDepartement})`
           : " Nom de la ville (00)"}
-      </h5>
+      </h5> */}
       <div
         className="card-content"
         style={{

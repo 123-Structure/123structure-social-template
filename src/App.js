@@ -6,11 +6,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Carousel from "react-material-ui-carousel";
 // COMPONENTS
 import Settings from "./components/Settings/Settings";
-import Presentation from "./components/Views/Presentation.jsx";
-import Zone from "./components/Views/Zone.jsx";
-import Maps from "./components/Views/Maps.jsx";
+// import Presentation from "./components/Views/Presentation.jsx";
+// import Zone from "./components/Views/Zone.jsx";
+// import Maps from "./components/Views/Maps.jsx";
 import Image from "./components/Views/Image.jsx";
-import Cloud from "./components/Views/Cloud.jsx";
+// import Cloud from "./components/Views/Cloud.jsx";
 import Contact from "./components/Views/Contact.jsx";
 import Loading from "./components/Loading.jsx";
 // IMAGES
@@ -33,8 +33,8 @@ function App() {
 
   const [projectName, setProjectName] = useState("");
   const [selectedCity, setSelectedCity] = useState({});
-  const [picture, setPicture] = useState();
-  const [picturePosition, setPicturePosition] = useState(50);
+  // const [picture, setPicture] = useState();
+  // const [picturePosition, setPicturePosition] = useState(50);
   const [image, setImage] = useState([]);
   const [legende1, setLegende1] = useState("");
   const [legende2, setLegende2] = useState("");
@@ -45,9 +45,12 @@ function App() {
   const [logoImage1, setLogoImage1] = useState(false);
   const [logoImage2, setLogoImage2] = useState(false);
   const [logoImage3, setLogoImage3] = useState(false);
+  const [logoLightImage1, setLogoLightImage1] = useState(false);
+  const [logoLightImage2, setLogoLightImage2] = useState(false);
+  const [logoLightImage3, setLogoLightImage3] = useState(false);
   const [partner, setPartner] = useState("");
-  const [map1, setMap1] = useState("");
-  const [map2, setMap2] = useState("");
+  // const [map1, setMap1] = useState("");
+  // const [map2, setMap2] = useState("");
   const [autoplay, setAutoplay] = useState(false);
   const [currentView, setCurrentView] = useState(0);
 
@@ -67,28 +70,16 @@ function App() {
   const info = () => {
     switch (currentView) {
       case 0:
-        return "1/8 - Presentation";
+        return "1/4 - Image 1";
 
       case 1:
-        return "2/8 - Localisation";
+        return "2/4 - Image 2";
 
       case 2:
-        return "3/8 - Zone Sismique - Vent - Neige";
+        return "3/4 - Image 3";
 
       case 3:
-        return "4/8 - Image 1";
-
-      case 4:
-        return "5/8 - Image 2";
-
-      case 5:
-        return "6/8 - Image 3";
-
-      // case 6:
-      //   return "7/8 - Mots clés";
-
-      case 6:
-        return "8/8 - Contact";
+        return "4/4 - Contact";
 
       default:
         break;
@@ -113,12 +104,12 @@ function App() {
           setSelectedCity={setSelectedCity}
           projectName={projectName}
           setProjectName={setProjectName}
-          setPicture={setPicture}
-          picturePosition={picturePosition}
-          setPicturePosition={setPicturePosition}
+          // setPicture={setPicture}
+          // picturePosition={picturePosition}
+          // setPicturePosition={setPicturePosition}
           setPartner={setPartner}
-          setMap1={setMap1}
-          setMap2={setMap2}
+          // setMap1={setMap1}
+          // setMap2={setMap2}
           setImage={setImage}
           legende1={legende1}
           legende2={legende2}
@@ -132,6 +123,9 @@ function App() {
           setLogoImage1={setLogoImage1}
           setLogoImage2={setLogoImage2}
           setLogoImage3={setLogoImage3}
+          setLogoLightImage1={setLogoLightImage1}
+          setLogoLightImage2={setLogoLightImage2}
+          setLogoLightImage3={setLogoLightImage3}
         />
         <div className="Preview">
           <Carousel
@@ -141,7 +135,7 @@ function App() {
             index={currentView}
             swipe={false}
           >
-            <Presentation
+            {/* <Presentation
               printRef={printRef}
               theme={theme}
               projectName={projectName}
@@ -165,7 +159,7 @@ function App() {
               selectedCity={selectedCity}
               projectName={projectName}
               partner={partner}
-            />
+            /> */}
             {/* {image.map((img, index) => (
               <Image
                 printRef={printRef}
@@ -184,9 +178,10 @@ function App() {
               projectName={projectName}
               partner={partner}
               img={image[0]}
-              index={3}
+              index={0}
               imgPosition={image1position}
               logoStyle={logoImage1}
+              logoLightStyle={logoLightImage1}
               legende={legende1}
             />
             <Image
@@ -196,9 +191,10 @@ function App() {
               projectName={projectName}
               partner={partner}
               img={image[1]}
-              index={4}
+              index={1}
               imgPosition={image2position}
               logoStyle={logoImage2}
+              logoLightStyle={logoLightImage2}
               legende={legende2}
             />
             <Image
@@ -208,9 +204,10 @@ function App() {
               projectName={projectName}
               partner={partner}
               img={image[2]}
-              index={5}
+              index={2}
               imgPosition={image3position}
               logoStyle={logoImage3}
+              logoLightStyle={logoLightImage3}
               legende={legende3}
             />
             {/* <Cloud
@@ -242,31 +239,31 @@ function App() {
           </h4>
         </div>
         <div className="download-card" style={{ display: "none" }}>
-          <Presentation
-            printRef={printRef}
-            theme={theme}
-            projectName={projectName}
-            selectedCity={selectedCity}
-            picture={picture}
-            picturePosition={picturePosition}
-            partner={partner}
-          />
-          <Maps
-            printRef={printRef}
-            theme={theme}
-            selectedCity={selectedCity}
-            projectName={projectName}
-            map1={map1}
-            map2={map2}
-            partner={partner}
-          />
-          <Zone
-            printRef={printRef}
-            theme={theme}
-            selectedCity={selectedCity}
-            projectName={projectName}
-            partner={partner}
-          />
+          {/* <Presentation
+              printRef={printRef}
+              theme={theme}
+              projectName={projectName}
+              selectedCity={selectedCity}
+              picture={picture}
+              picturePosition={picturePosition}
+              partner={partner}
+            />
+            <Maps
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              map1={map1}
+              map2={map2}
+              partner={partner}
+            />
+            <Zone
+              printRef={printRef}
+              theme={theme}
+              selectedCity={selectedCity}
+              projectName={projectName}
+              partner={partner}
+            /> */}
           {/* {image.map((img, index) => (
               <Image
                 printRef={printRef}
@@ -285,9 +282,10 @@ function App() {
             projectName={projectName}
             partner={partner}
             img={image[0]}
-            index={3}
+            index={0}
             imgPosition={image1position}
             logoStyle={logoImage1}
+            logoLightStyle={logoLightImage1}
             legende={legende1}
           />
           <Image
@@ -297,9 +295,10 @@ function App() {
             projectName={projectName}
             partner={partner}
             img={image[1]}
-            index={4}
+            index={1}
             imgPosition={image2position}
             logoStyle={logoImage2}
+            logoLightStyle={logoLightImage2}
             legende={legende2}
           />
           <Image
@@ -309,9 +308,10 @@ function App() {
             projectName={projectName}
             partner={partner}
             img={image[2]}
-            index={5}
+            index={2}
             imgPosition={image3position}
             logoStyle={logoImage3}
+            logoLightStyle={logoLightImage3}
             legende={legende3}
           />
           {/* <Cloud
