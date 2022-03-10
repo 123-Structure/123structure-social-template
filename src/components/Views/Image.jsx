@@ -39,7 +39,9 @@ const Image = ({
   theme,
   selectedCity,
   projectName,
-  partner,
+  partner1,
+  partner2,
+  partner3,
   img,
   index,
   imgPosition,
@@ -70,11 +72,31 @@ const Image = ({
           }
           alt="logo"
         />
-        {partner !== "" ? (
+        {partner1 !== "" ? (
           <img
             className="logo"
-            src={partner}
-            alt="partner"
+            src={partner1}
+            alt="partner1"
+            style={{ marginLeft: "16px" }}
+          />
+        ) : (
+          <div></div>
+        )}
+        {partner2 !== "" ? (
+          <img
+            className="logo"
+            src={partner2}
+            alt="partner2"
+            style={{ marginLeft: "16px" }}
+          />
+        ) : (
+          <div></div>
+        )}
+        {partner3 !== "" ? (
+          <img
+            className="logo"
+            src={partner3}
+            alt="partner3"
             style={{ marginLeft: "16px" }}
           />
         ) : (

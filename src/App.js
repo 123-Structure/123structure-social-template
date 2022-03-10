@@ -48,7 +48,9 @@ function App() {
   const [logoLightImage1, setLogoLightImage1] = useState(false);
   const [logoLightImage2, setLogoLightImage2] = useState(false);
   const [logoLightImage3, setLogoLightImage3] = useState(false);
-  const [partner, setPartner] = useState("");
+  const [partner1, setPartner1] = useState("");
+  const [partner2, setPartner2] = useState("");
+  const [partner3, setPartner3] = useState("");
   // const [map1, setMap1] = useState("");
   // const [map2, setMap2] = useState("");
   const [autoplay, setAutoplay] = useState(false);
@@ -107,7 +109,9 @@ function App() {
           // setPicture={setPicture}
           // picturePosition={picturePosition}
           // setPicturePosition={setPicturePosition}
-          setPartner={setPartner}
+          setPartner1={setPartner1}
+          setPartner2={setPartner2}
+          setPartner3={setPartner3}
           // setMap1={setMap1}
           // setMap2={setMap2}
           setImage={setImage}
@@ -176,7 +180,9 @@ function App() {
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
-              partner={partner}
+              partner1={partner1}
+              partner2={partner2}
+              partner3={partner3}
               img={image[0]}
               index={0}
               imgPosition={image1position}
@@ -189,7 +195,9 @@ function App() {
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
-              partner={partner}
+              partner1={partner1}
+              partner2={partner2}
+              partner3={partner3}
               img={image[1]}
               index={1}
               imgPosition={image2position}
@@ -202,7 +210,9 @@ function App() {
               theme={theme}
               selectedCity={selectedCity}
               projectName={projectName}
-              partner={partner}
+              partner1={partner1}
+              partner2={partner2}
+              partner3={partner3}
               img={image[2]}
               index={2}
               imgPosition={image3position}
@@ -280,7 +290,9 @@ function App() {
             theme={theme}
             selectedCity={selectedCity}
             projectName={projectName}
-            partner={partner}
+            partner1={partner1}
+            partner2={partner2}
+            partner3={partner3}
             img={image[0]}
             index={0}
             imgPosition={image1position}
@@ -293,7 +305,9 @@ function App() {
             theme={theme}
             selectedCity={selectedCity}
             projectName={projectName}
-            partner={partner}
+            partner1={partner1}
+            partner2={partner2}
+            partner3={partner3}
             img={image[1]}
             index={1}
             imgPosition={image2position}
@@ -306,7 +320,9 @@ function App() {
             theme={theme}
             selectedCity={selectedCity}
             projectName={projectName}
-            partner={partner}
+            partner1={partner1}
+            partner2={partner2}
+            partner3={partner3}
             img={image[2]}
             index={2}
             imgPosition={image3position}

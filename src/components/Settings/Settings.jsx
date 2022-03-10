@@ -48,7 +48,9 @@ const Settings = ({
   setProjectName,
   // setPicture,
   // setPicturePosition,
-  setPartner,
+  setPartner1,
+  setPartner2,
+  setPartner3,
   setMap1,
   setMap2,
   setImage,
@@ -70,7 +72,9 @@ const Settings = ({
 }) => {
   // const pictureInput = useRef();
   const imageInput = useRef();
-  const partnerInput = useRef();
+  const partnerInput1 = useRef();
+  const partnerInput2 = useRef();
+  const partnerInput3 = useRef();
   // const map1Ref = useRef();
   // const layerGroupRef = useRef();
   // const map2Ref = useRef();
@@ -291,24 +295,68 @@ const Settings = ({
               </FormControl>
             ) : null}
           </div>
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<PeopleAltIcon />}
-            onClick={() => partnerInput.current.click()}
-            sx={{ marginTop: "16px" }}
-          >
-            Partenaire
-          </Button>
-          <input
-            ref={partnerInput}
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={(e) =>
-              setPartner(window.URL.createObjectURL(e.target.files[0]))
-            }
-          />
+          <div 
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+          }}>
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<PeopleAltIcon />}
+              onClick={() => partnerInput1.current.click()}
+              sx={{ marginTop: "16px" }}
+            >
+              Partenaire 1
+            </Button>
+            <input
+              ref={partnerInput1}
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={(e) =>
+                setPartner1(window.URL.createObjectURL(e.target.files[0]))
+              }
+            />
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<PeopleAltIcon />}
+              onClick={() => partnerInput2.current.click()}
+              sx={{ marginTop: "16px" }}
+            >
+              Partenaire 2
+            </Button>
+            <input
+              ref={partnerInput2}
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={(e) =>
+                setPartner2(window.URL.createObjectURL(e.target.files[0]))
+              }
+            />
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<PeopleAltIcon />}
+              onClick={() => partnerInput3.current.click()}
+              sx={{ marginTop: "16px" }}
+            >
+              Partenaire 3
+            </Button>
+            <input
+              ref={partnerInput3}
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={(e) =>
+                setPartner3(window.URL.createObjectURL(e.target.files[0]))
+              }
+            />
+          </div>
           {/* <h2>Présentation</h2>
           <Button
             variant="contained"
