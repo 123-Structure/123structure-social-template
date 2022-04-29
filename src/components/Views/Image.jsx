@@ -1,7 +1,7 @@
 import React from "react";
 // IMAGES
-import bottomLeft from "../../assets/img/light-bottom-left.png";
-import topRight from "../../assets/img/light-top-right.png";
+import bottomLeft from "../../assets/img/decorators/light-bottom-left.png";
+import topRight from "../../assets/img/decorators/light-top-right.png";
 import logoMin from "../../assets/img/logo/123structure-logo-min.png";
 import logoMinLight from "../../assets/img/logo/123structure-logo-min-light.png";
 import logoMinDark from "../../assets/img/logo/123structure-logo-min-dark.png";

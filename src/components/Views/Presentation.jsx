@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // IMAGES
-import topLeft from "../../assets/img/dark-top-left.png";
-import bottomRight from "../../assets/img/dark-bottom-right.png";
+import topLeft from "../../assets/img/decorators/dark-top-left.png";
+import bottomRight from "../../assets/img/decorators/dark-bottom-right.png";
 import logoMin from "../../assets/img/logo/123structure-logo-min.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

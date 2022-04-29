@@ -1,16 +1,18 @@
 import React from "react";
 // IMAGES
-import bottomLeft from "../../assets/img/main-bottom-left.png";
-import topRight from "../../assets/img/main-top-right.png";
+import bottomLeft from "../../assets/img/decorators/main-bottom-left.png";
+import topRight from "../../assets/img/decorators/main-top-right.png";
 import logo from "../../assets/img/logo/123structure-logo-dark.png";
 import france from "../../assets/img/france.png";
+import qrCode from "../../assets/img/QRCode.png";
 // FONT AWESOME ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faPhone,
   faDesktop,
-  faHouseChimney,
+  // faHouseChimney,
+  faLink,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = ({ printRef, theme, projectName, selectedCity }) => {
@@ -64,11 +66,15 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
         <h1>
           <FontAwesomeIcon icon={faDesktop} /> 123structure.fr
         </h1>
+        <h1>
+        <FontAwesomeIcon icon={faLink} /> linktr.ee/123structure
+        </h1>
         <img
           src={france}
           alt="france"
           style={{ height: "325px", marginTop: "16px" }}
         />
+        <img src={qrCode} alt="QR Code" className="qrCode" />
       </div>
     </div>
   );
