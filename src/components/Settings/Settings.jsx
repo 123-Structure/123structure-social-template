@@ -4,6 +4,8 @@ import React, {
   useRef,
 } from "react";
 import "./Settings.css";
+// COMPONENTS
+import ImageSettings from "./ImageSettings";
 // MATERIAL UI
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
@@ -11,7 +13,6 @@ import Button from "@mui/material/Button";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import Slider from "@mui/material/Slider";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -57,18 +58,75 @@ const Settings = ({
   legende1,
   legende2,
   legende3,
+  legende4,
+  legende5,
+  legende6,
+  legende7,
+  legende8,
+  logoImage1,
+  logoImage2,
+  logoImage3,
+  logoImage4,
+  logoImage5,
+  logoImage6,
+  logoImage7,
+  logoImage8,
+  logoLightImage1,
+  logoLightImage2,
+  logoLightImage3,
+  logoLightImage4,
+  logoLightImage5,
+  logoLightImage6,
+  logoLightImage7,
+  logoLightImage8,
+  hideCard1,
+  hideCard2,
+  hideCard3,
+  hideCard4,
+  hideCard5,
+  hideCard6,
+  hideCard7,
+  hideCard8,
   setLegende1,
   setLegende2,
   setLegende3,
+  setLegende4,
+  setLegende5,
+  setLegende6,
+  setLegende7,
+  setLegende8,
   setImage1position,
   setImage2position,
   setImage3position,
+  setImage4position,
+  setImage5position,
+  setImage6position,
+  setImage7position,
+  setImage8position,
   setLogoImage1,
   setLogoImage2,
   setLogoImage3,
+  setLogoImage4,
+  setLogoImage5,
+  setLogoImage6,
+  setLogoImage7,
+  setLogoImage8,
   setLogoLightImage1,
   setLogoLightImage2,
   setLogoLightImage3,
+  setLogoLightImage4,
+  setLogoLightImage5,
+  setLogoLightImage6,
+  setLogoLightImage7,
+  setLogoLightImage8,
+  setHideCard1,
+  setHideCard2,
+  setHideCard3,
+  setHideCard4,
+  setHideCard5,
+  setHideCard6,
+  setHideCard7,
+  setHideCard8,
 }) => {
   // const pictureInput = useRef();
   const imageInput = useRef();
@@ -127,16 +185,23 @@ const Settings = ({
   const title = (i) => {
     switch (i) {
       case 0:
-        return "1 - Image 1";
-
+        return `1 - ${legende1 ? legende1 : "Image 1"}`;
       case 1:
-        return "2 - Image 2";
-
+        return `2 - ${legende2 ? legende2 : "Image 2"}`;
       case 2:
-        return "3 - Image 3";
-
+        return `3 - ${legende3 ? legende3 : "Image 3"}`;
       case 3:
-        return "4 - Contact";
+        return `4 - ${legende4 ? legende4 : "Image 4"}`;
+      case 4:
+        return `5 - ${legende5 ? legende5 : "Image 5"}`;
+      case 5:
+        return `6 - ${legende6 ? legende6 : "Image 6"}`;
+      case 6:
+        return `7 - ${legende7 ? legende7 : "Image 7"}`;
+      case 7:
+        return `8 - ${legende8 ? legende8 : "Image 8"}`;
+      case 8:
+        return "9 - Contact";
 
       default:
         break;
@@ -161,7 +226,7 @@ const Settings = ({
       // element.style.transform = "scale(2)";
       const canvas = await html2canvas(element);
       const data = await canvas.toDataURL("image/jpg");
-      console.log(i, data.replace(/^data:image\/(png|jpg);base64,/, ""));
+      // console.log(i, data.replace(/^data:image\/(png|jpg);base64,/, ""));
       zip.file(
         `${title(i)}.jpg`,
         data.replace(/^data:image\/(png|jpg);base64,/, ""),
@@ -295,13 +360,14 @@ const Settings = ({
               </FormControl>
             ) : null}
           </div>
-          <div 
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              justifyContent: "flex-start",
+            }}
+          >
             <Button
               variant="contained"
               size="large"
@@ -456,16 +522,6 @@ const Settings = ({
           >
             Charger plusieurs images
           </Button>
-          <h3>Image 1</h3>{" "}
-          <TextField
-            id="outlined-basic"
-            label="Légende"
-            variant="outlined"
-            value={legende1}
-            onChange={(e) => {
-              setLegende1(e.target.value);
-            }}
-          />
           <input
             ref={imageInput}
             type="file"
@@ -477,116 +533,80 @@ const Settings = ({
               setImage(files.map((file) => window.URL.createObjectURL(file)));
             }}
           />
-          <div>
-            <p>Positioner l'image 1</p>
-            <Slider
-              aria-label="position1"
-              defaultValue={50}
-              valueLabelDisplay="auto"
-              onChange={(e) => setImage1position(e.target.value)}
-              // step={1}
-              // marks
-              min={1}
-              max={100}
-              sx={{ width: "75%" }}
-            />
-          </div>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch onChange={(e) => setLogoImage1(e.target.checked)} />
-              }
-              label="Logo 123 STR sombre ?"
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={(e) => setLogoLightImage1(e.target.checked)}
-                />
-              }
-              label="Logo 123 STR clair ?"
-            />
-          </FormGroup>
-          <h3>Image 2</h3>
-          <TextField
-            id="outlined-basic"
-            label="Légende"
-            variant="outlined"
-            value={legende2}
-            onChange={(e) => {
-              setLegende2(e.target.value);
-            }}
+          <ImageSettings
+            legende1={legende1}
+            legende2={legende2}
+            legende3={legende3}
+            legende4={legende4}
+            legende5={legende5}
+            legende6={legende6}
+            legende7={legende7}
+            legende8={legende8}
+            logoImage1={logoImage1}
+            logoImage2={logoImage2}
+            logoImage3={logoImage3}
+            logoImage4={logoImage4}
+            logoImage5={logoImage5}
+            logoImage6={logoImage6}
+            logoImage7={logoImage7}
+            logoImage8={logoImage8}
+            logoLightImage1={logoLightImage1}
+            logoLightImage2={logoLightImage2}
+            logoLightImage3={logoLightImage3}
+            logoLightImage4={logoLightImage4}
+            logoLightImage5={logoLightImage5}
+            logoLightImage6={logoLightImage6}
+            logoLightImage7={logoLightImage7}
+            logoLightImage8={logoLightImage8}
+            hideCard1={hideCard1}
+            hideCard2={hideCard2}
+            hideCard3={hideCard3}
+            hideCard4={hideCard4}
+            hideCard5={hideCard5}
+            hideCard6={hideCard6}
+            hideCard7={hideCard7}
+            hideCard8={hideCard8}
+            setLegende1={setLegende1}
+            setLegende2={setLegende2}
+            setLegende3={setLegende3}
+            setLegende4={setLegende4}
+            setLegende5={setLegende5}
+            setLegende6={setLegende6}
+            setLegende7={setLegende7}
+            setLegende8={setLegende8}
+            setImage1position={setImage1position}
+            setImage2position={setImage2position}
+            setImage3position={setImage3position}
+            setImage4position={setImage4position}
+            setImage5position={setImage5position}
+            setImage6position={setImage6position}
+            setImage7position={setImage7position}
+            setImage8position={setImage8position}
+            setLogoImage1={setLogoImage1}
+            setLogoImage2={setLogoImage2}
+            setLogoImage3={setLogoImage3}
+            setLogoImage4={setLogoImage4}
+            setLogoImage5={setLogoImage5}
+            setLogoImage6={setLogoImage6}
+            setLogoImage7={setLogoImage7}
+            setLogoImage8={setLogoImage8}
+            setLogoLightImage1={setLogoLightImage1}
+            setLogoLightImage2={setLogoLightImage2}
+            setLogoLightImage3={setLogoLightImage3}
+            setLogoLightImage4={setLogoLightImage4}
+            setLogoLightImage5={setLogoLightImage5}
+            setLogoLightImage6={setLogoLightImage6}
+            setLogoLightImage7={setLogoLightImage7}
+            setLogoLightImage8={setLogoLightImage8}
+            setHideCard1={setHideCard1}
+            setHideCard2={setHideCard2}
+            setHideCard3={setHideCard3}
+            setHideCard4={setHideCard4}
+            setHideCard5={setHideCard5}
+            setHideCard6={setHideCard6}
+            setHideCard7={setHideCard7}
+            setHideCard8={setHideCard8}
           />
-          <div>
-            <p>Positioner l'image 2</p>
-            <Slider
-              aria-label="position1"
-              defaultValue={50}
-              valueLabelDisplay="auto"
-              onChange={(e) => setImage2position(e.target.value)}
-              // step={1}
-              // marks
-              min={1}
-              max={100}
-              sx={{ width: "75%" }}
-            />
-          </div>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch onChange={(e) => setLogoImage2(e.target.checked)} />
-              }
-              label="Logo 123 STR sombre ?"
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={(e) => setLogoLightImage2(e.target.checked)}
-                />
-              }
-              label="Logo 123 STR clair ?"
-            />
-          </FormGroup>
-          <h3>Image 3</h3>
-          <TextField
-            id="outlined-basic"
-            label="Légende"
-            variant="outlined"
-            value={legende3}
-            onChange={(e) => {
-              setLegende3(e.target.value);
-            }}
-          />
-          <div>
-            <p>Positioner l'image 3</p>
-            <Slider
-              aria-label="position1"
-              defaultValue={50}
-              valueLabelDisplay="auto"
-              onChange={(e) => setImage3position(e.target.value)}
-              // step={1}
-              // marks
-              min={1}
-              max={100}
-              sx={{ width: "75%" }}
-            />
-          </div>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch onChange={(e) => setLogoImage3(e.target.checked)} />
-              }
-              label="Logo 123 STR sombre ?"
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={(e) => setLogoLightImage3(e.target.checked)}
-                />
-              }
-              label="Logo 123 STR clair ?"
-            />
-          </FormGroup>
           <h2>Visualisation et export</h2>
           <FormGroup sx={{ width: "35%" }}>
             <FormControlLabel

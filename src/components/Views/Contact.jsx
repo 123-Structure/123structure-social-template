@@ -19,7 +19,7 @@ const Contact = ({ printRef, theme, projectName, selectedCity }) => {
   return (
     <div
       className="card"
-      ref={(e) => (printRef.current[3] = e)}
+      ref={(e) => (printRef.current[8] = e)}
       style={{
         width: theme.dimension.width,
         height: theme.dimension.height,

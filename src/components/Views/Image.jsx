@@ -48,6 +48,7 @@ const Image = ({
   logoStyle,
   logoLightStyle,
   legende,
+  hideCard,
 }) => {
   const IconSize = 100;
 
@@ -163,125 +164,129 @@ const Image = ({
           {legende ? " " + legende : " Legende"}
         </h5>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          top: "35px",
-          left: "35px",
-        }}
-      >
+      {hideCard === true ? (
+        <div></div>
+      ) : (
         <div
-          className="geo-card"
           style={{
-            height: IconSize + 80,
-            width: IconSize + 70,
-            color: theme.color.dark,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "35px",
+            left: "35px",
           }}
         >
-          <h3>Vent</h3>
-          <img
-            className="wind-icon"
+          <div
+            className="geo-card"
             style={{
-              width: IconSize,
-              height: IconSize,
+              height: IconSize + 80,
+              width: IconSize + 70,
+              color: theme.color.dark,
             }}
-            src={
-              selectedCity.vent === "1"
-                ? wind_1
-                : selectedCity.vent === "2"
-                ? wind_2
-                : selectedCity.vent === "3"
-                ? wind_3
-                : selectedCity.vent === "4"
-                ? wind_4
-                : selectedCity.vent === "5"
-                ? wind_5
-                : wind_default
-            }
-            alt="wind-icon"
-          />
-        </div>
-        <div
-          className="geo-card"
-          style={{
-            height: IconSize + 80,
-            width: IconSize + 70,
-            color: theme.color.dark,
-            marginLeft: "25px",
-            marginRight: "25px",
-          }}
-        >
-          <h3>Neige</h3>
-          <img
-            className="snow-icon"
+          >
+            <h3>Vent</h3>
+            <img
+              className="wind-icon"
+              style={{
+                width: IconSize,
+                height: IconSize,
+              }}
+              src={
+                selectedCity.vent === "1"
+                  ? wind_1
+                  : selectedCity.vent === "2"
+                  ? wind_2
+                  : selectedCity.vent === "3"
+                  ? wind_3
+                  : selectedCity.vent === "4"
+                  ? wind_4
+                  : selectedCity.vent === "5"
+                  ? wind_5
+                  : wind_default
+              }
+              alt="wind-icon"
+            />
+          </div>
+          <div
+            className="geo-card"
             style={{
-              width: IconSize,
-              height: IconSize,
+              height: IconSize + 80,
+              width: IconSize + 70,
+              color: theme.color.dark,
+              marginLeft: "25px",
+              marginRight: "25px",
             }}
-            src={
-              selectedCity.neige === "A1"
-                ? snow_A1
-                : selectedCity.neige === "A2"
-                ? snow_A2
-                : selectedCity.neige === "B1"
-                ? snow_B1
-                : selectedCity.neige === "B2"
-                ? snow_B2
-                : selectedCity.neige === "C1"
-                ? snow_C1
-                : selectedCity.neige === "C2"
-                ? snow_C2
-                : selectedCity.neige === "D"
-                ? snow_D
-                : selectedCity.neige === "E"
-                ? snow_E
-                : selectedCity.neige === "0"
-                ? snow_0
-                : snow_default
-            }
-            alt="snow-icon"
-          />
-        </div>
-        <div
-          className="geo-card"
-          style={{
-            height: IconSize + 80,
-            width: IconSize + 70,
-            color: theme.color.dark,
-          }}
-        >
-          <h3>Séisme</h3>
-          <img
-            className="seism-icon"
+          >
+            <h3>Neige</h3>
+            <img
+              className="snow-icon"
+              style={{
+                width: IconSize,
+                height: IconSize,
+              }}
+              src={
+                selectedCity.neige === "A1"
+                  ? snow_A1
+                  : selectedCity.neige === "A2"
+                  ? snow_A2
+                  : selectedCity.neige === "B1"
+                  ? snow_B1
+                  : selectedCity.neige === "B2"
+                  ? snow_B2
+                  : selectedCity.neige === "C1"
+                  ? snow_C1
+                  : selectedCity.neige === "C2"
+                  ? snow_C2
+                  : selectedCity.neige === "D"
+                  ? snow_D
+                  : selectedCity.neige === "E"
+                  ? snow_E
+                  : selectedCity.neige === "0"
+                  ? snow_0
+                  : snow_default
+              }
+              alt="snow-icon"
+            />
+          </div>
+          <div
+            className="geo-card"
             style={{
-              width: IconSize,
-              height: IconSize,
+              height: IconSize + 80,
+              width: IconSize + 70,
+              color: theme.color.dark,
             }}
-            src={
-              selectedCity.seisme === "1"
-                ? seism_1
-                : selectedCity.seisme === "2"
-                ? seism_2
-                : selectedCity.seisme === "3"
-                ? seism_3
-                : selectedCity.seisme === "4"
-                ? seism_4
-                : selectedCity.seisme === "5"
-                ? seism_5
-                : seism_default
-            }
-            alt="seism-icon"
-          />
+          >
+            <h3>Séisme</h3>
+            <img
+              className="seism-icon"
+              style={{
+                width: IconSize,
+                height: IconSize,
+              }}
+              src={
+                selectedCity.seisme === "1"
+                  ? seism_1
+                  : selectedCity.seisme === "2"
+                  ? seism_2
+                  : selectedCity.seisme === "3"
+                  ? seism_3
+                  : selectedCity.seisme === "4"
+                  ? seism_4
+                  : selectedCity.seisme === "5"
+                  ? seism_5
+                  : seism_default
+              }
+              alt="seism-icon"
+            />
+          </div>
         </div>
-      </div>
+      )}
       {img === undefined ? (
         <img
           id="main"
-          src={`https://via.placeholder.com/1000?text=Image+${index}`}
+          src={`https://via.placeholder.com/1000?text=Image+${index + 1}`}
           alt="main"
           style={{
             borderRadius: "8px",
