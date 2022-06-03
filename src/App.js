@@ -438,6 +438,7 @@ function App() {
             logoStyle={logoImage1}
             logoLightStyle={logoLightImage1}
             legende={legende1}
+            hideCard={hideCard1}
           />
           <Image
             printRef={printRef}
@@ -453,6 +454,7 @@ function App() {
             logoStyle={logoImage2}
             logoLightStyle={logoLightImage2}
             legende={legende2}
+            hideCard={hideCard2}
           />
           <Image
             printRef={printRef}
@@ -468,6 +470,7 @@ function App() {
             logoStyle={logoImage3}
             logoLightStyle={logoLightImage3}
             legende={legende3}
+            hideCard={hideCard3}
           />
           <Image
             printRef={printRef}
@@ -483,6 +486,7 @@ function App() {
             logoStyle={logoImage4}
             logoLightStyle={logoLightImage4}
             legende={legende4}
+            hideCard={hideCard4}
           />
           <Image
             printRef={printRef}
@@ -498,6 +502,7 @@ function App() {
             logoStyle={logoImage5}
             logoLightStyle={logoLightImage5}
             legende={legende5}
+            hideCard={hideCard5}
           />
           <Image
             printRef={printRef}
@@ -513,6 +518,7 @@ function App() {
             logoStyle={logoImage6}
             logoLightStyle={logoLightImage6}
             legende={legende6}
+            hideCard={hideCard6}
           />
           <Image
             printRef={printRef}
@@ -528,6 +534,7 @@ function App() {
             logoStyle={logoImage7}
             logoLightStyle={logoLightImage7}
             legende={legende7}
+            hideCard={hideCard7}
           />
           <Image
             printRef={printRef}
@@ -543,6 +550,7 @@ function App() {
             logoStyle={logoImage8}
             logoLightStyle={logoLightImage8}
             legende={legende8}
+            hideCard={hideCard8}
           />
           {/* <Cloud
               printRef={printRef}
